@@ -1,0 +1,2275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name ="viewport" content ="width=device-device ,initial-scale =1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Detroit news-Home </title>
+
+
+    <style>
+        *{
+            margin :0 ;
+            padding :0;
+            box-sizing:border-box;
+        }
+        html,body{
+            max-width :100%;
+            overflow-x:hidden;
+        }
+        body{
+            font-family : 'roboto',sans-serif ;
+            background-color : #f5f5f5;
+            Line-height :1.5;
+
+        }
+
+
+        header{
+            top:0;
+            width:100%;
+            height: 8% ;
+            left:0;
+            position :fixed;
+            background-color:#ffffff;
+            /* padding :1rem;*/
+            padding:0px 20px;
+            z-index:1000;
+            border-bottom:1px solid #ccc;
+            display:flex;
+            justify-content :space-between;
+            align-items:center;
+            box-shadow :0 0px 0px rgba(0,0,0,0.1);
+
+
+
+        }
+        .containerW{
+            max-width:100%;
+            padding:0.4rem 3rem;
+            display:flex;
+            align-items: center ;
+            justify-content :space-between;
+            white-space:nowrap;
+            gap:40px;
+
+        }
+        .logo {
+            font-size : 1rem;
+            background-color: darkred;
+            color :white;
+            padding :0rem ;
+            font-weight:bold;
+            border-radius:1px;
+            White-space:nowrap;
+            flex-shrink:0;
+            margin-right:2rem;
+            display: block;
+            text-decoration :none;
+
+
+        }
+        nav ul{
+            display:flex;
+            flex-wrap:nowrap;
+            list-style :none;
+            gap:1.2rem; /*spazio fra il link */
+            padding: 0rem;
+
+        }
+        nav a {
+            text-decoration:none;
+            color:#333;
+            font-size:0.8rem;
+            white-space:nowrap;
+
+        }
+
+        footer {
+            background-color: #f8f8f8;
+            padding: 20px;
+            font-family: sans-serif;
+            font-size: 14px;
+            color: #333;
+            margin-left:0;
+            margin-top: 2rem;
+        }
+
+        footer a {
+            color: #333;
+            text-decoration: none;
+            margin:0 5px;
+
+        }
+
+        footer a:hover {
+            text-decoration:none;
+
+        }
+
+
+        main {
+            margin-top:30px;/* altezza dell'hearder per evitare sovrapposizione*/
+            display:flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding:20px;
+            text-decoration:none;
+
+
+        }
+        .main-article {
+            flex:  2;
+            background: #fff;
+            padding: 0rem;
+            margin-top:0;
+
+        }
+        .main-article img {
+            display:flex;
+            height: 350px;
+            margin-top:-6rem;
+            margin-left :5rem;
+
+
+        }
+        .main-article h2 {
+            margin-top: 1rem;
+            font-size: 1.5rem;
+            margin-left:6rem;
+
+        }
+        .main-article p {
+            color: #666;
+            margin-top: 0.5rem;
+            margin-left:6rem;
+        }
+        aside {
+            flex:3;
+            display: flex;
+            flex-direction: column;
+            gap: 0rem;
+
+        }
+        .small-news {
+            background: #fff;
+            padding: 1rem;
+            display: flex;
+            flex-direction: row;
+            gap: 2rem;
+            flex:2;
+            margin-left:0rem;
+
+        }
+        .small-news img {
+            width:200px;
+            margin-top:-1rem;
+            margin-left :4rem;
+        }
+        .small-news div {
+            flex: 2;
+
+        }
+        .small-news h3 {
+            font-size: 1rem;
+            width:50%;
+            flex-wrap:wrap;
+            position:relative;
+
+        }
+        .small-news p {
+            font-size: 0.8rem;
+            color: #999;
+            font-weight: bold;
+            width:50%;
+        }
+
+        .additional-text {
+            display:flex;
+            font-size: 0.9rem; /* Dimensione del font per il paragrafo, se desiderato */
+            margin-left:5rem;
+            margin-top:-1rem;
+            padding:3px 3px 0 3px;
+            width:100%;
+            font-weight:bold;
+
+
+        }
+
+        .main-article a:active:after {
+            transform: scaleX(1);
+        }
+
+        .immagini-colonna {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-left: auto;
+            margin-right: 15rem;
+            width: fit-content;
+            flex: 2;
+
+        }
+
+        .riga-immagine {
+            display: flex;
+            align-items: center;
+            gap: 100px;
+
+
+        }
+
+        .riga-immagine h5 {
+            font-size: 14px;
+            margin-left: 3rem;
+            max-width: 150px;
+            flex: 5;
+            margin-right: 8rem;
+            font-weight: bold;
+
+
+        }
+
+        .riga-immagine img {
+            width: 100px;
+            /*height: 100%;*/
+        }
+
+        .text-muted {
+            font-size: 0.85rem;
+            text-transform: lowercase;
+            margin-left: 10rem;
+            margin-top:5rem;
+
+
+        }
+
+
+
+     /*  I link devono mantenere il colore nero*/
+        .riga-immagine a,
+        .small-news a,
+        .main-article a {
+                color: black; /* Colore del titolo principale */
+                text-decoration:none; /* Rimuove la sottolineatura predefinita */
+                position: relative; /* Necessario per posizionare l'elemento pseudo */
+        }
+
+        .main-article a:hover,
+        .main-article a:focus,
+        .main-article a:active {
+                color: black; /* Assicura che il colore rimanga nero quando si fa clic */
+                text-decoration:underline; /* assicura di avere underline quando si fa un clic*/
+                text-decoration-color: red;/* per avere un colore rosso quando il link viene cliccato*/
+        }
+
+        .small-news a:hover,
+        .small-news a:focus,
+        .small-news a:active{
+            color: black; /* Assicura che il colore rimanga nero quando si fa clic */
+            text-decoration:underline; /* assicura di avere underline quando si fa un clic*/
+            text-decoration-color: red;/* per avere un colore rosso quando il link viene cliccato*/
+        }
+
+        .riga-immagine a:hover,
+        .riga-immagine a:focus,
+        .riga-immagine a:active{
+            color: black; /* Assicura che il colore rimanga nero quando si fa clic */
+            text-decoration:underline; /* assicura di avere underline quando si fa un clic*/
+            text-decoration-color: red;/* per avere un colore rosso quando il link viene cliccato*/
+        }
+
+
+
+
+
+
+
+
+        .section-title {
+                font-weight: bold;
+                font-size: 1.5rem;
+                display: flex;
+                align-items: center;
+                margin-bottom: 1.5rem;
+                margin-top: 5rem;
+                margin-left:36rem;
+        }
+
+        .red-box {
+                width: 20px;
+                height: 12px;
+                background-color: darkred;
+                margin-right: 8px;
+        }
+
+
+        .container {
+            background: #fff;
+            padding: 1rem;
+            display: flex;
+            flex-direction: row;
+            gap: 2rem;
+            margin-left: 0rem;
+            flex: 0 0 100%;
+
+        }
+
+        .container h5 {
+                font-size: 1rem;
+                display:flex;
+                flex-wrap:wrap;
+                font-weight:bold;
+                color:black;
+
+        }
+
+        .container img {
+                margin-left: 35rem;
+                display:flex;
+
+                 
+        }
+        .containerH img{
+            margin-top:-2rem;
+            display:flex;
+            margin-left:36rem;
+        }
+        .containerH {
+            background: #fff;
+            padding: 1rem;
+            display: flex;
+            flex-direction: row;
+            gap: 2rem;
+            flex: 0 0 100%;
+        }
+
+
+
+        .video-row {
+                display: flex;
+                justify-content: center;
+
+
+        }
+
+        .video-row img {
+                margin-left: 30rem;
+                display:flex;
+                overflow: hidden;
+
+        }
+
+        .video-item1{
+                flex: 0 0 100%;
+                max-width: 33.33%;
+                padding: 3px 3px 0 3px;
+
+
+
+        }
+
+
+
+        .video-item2 {
+                flex: 0 0 100%;
+                max-width: 33.33%;
+                padding: 3px 3px 0 3px;
+
+        }
+
+        .video-item3 {
+                flex: 0 0 100%;
+                max-width: 33.33%;
+                padding: 3px 3px 0 3px;
+
+        }
+
+        .video-item1 img {
+                margin-left: 36rem;
+                display:flex;
+        }
+
+        .video-item2 img {
+                margin-left: 21rem;
+        }
+
+        .video-item3 img {
+                margin-left: 6rem;
+        }
+
+        .thumbnail-text1{
+            font-weight:bold;
+            font-size: 0.9rem;
+            margin-left:36rem;
+            width:50%;
+            color:black;
+        }
+
+        .thumbnail-text2{
+            font-weight:bold;
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            margin-left:21rem;
+            color:black;
+        }
+
+        .thumbnail-text3{
+            font-weight:bold;
+            font-size: 0.9rem;
+            margin-left:6rem;
+            flex-wrap:wrap;
+            width:60%;
+            color:black;
+        }
+
+
+        .img-row {
+            margin-right: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 3px 3px 0 3px;
+            margin-top: 6rem;
+        }
+
+        .img-row img {
+            margin-left: 30rem;
+
+        }
+
+        .img-item1 {
+            flex: 0 0 100%;
+            max-width: 33.33%;
+            padding: 3px 3px 0 3px;
+        }
+
+        .img-item2 {
+            flex: 0 0 100%;
+            max-width: 33.33%;
+            padding: 3px 3px 0 3px;
+        }
+
+        .img-item3 {
+            flex: 0 0 100%;
+            max-width: 33.33%;
+            padding: 3px 3px 0 3px;
+        }
+        .img-item1 img {
+            margin-left: 36rem;
+        }
+
+        .img-item2 img {
+            margin-left: 19rem;
+        }
+
+        .img-item3 img {
+            margin-left: 2rem;
+
+        }
+        .thumb-text1 {
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            margin-left:36rem;
+            display:flex;
+            width:50%;
+            font-weight:bold;
+            color:black;
+        }
+
+        .thumb-text2 {
+            font-size: 0.9rem;
+            margin-left:21rem;
+            flex-wrap:wrap;
+            font-weight:bold;
+            color:black;
+            width:25%;
+        }
+
+        .thumb-text3 {
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            width:60%;
+            margin-left:2rem;
+            font-weight:bold;
+            color:black;
+        }
+        .Moretext1{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            margin-left:36rem;
+            display:flex;
+            width:50%;
+            color:black;
+            font-weight:bold;
+        }
+        .Moretext2{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            margin-left:14.5rem;
+            display:flex;
+            width:50%;
+            color:black;
+            font-weight:bold;
+        }
+        .ThisText1,.OneText{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            margin-left:36rem;
+            display:flex;
+            width:50%;
+            font-weight:bold;
+        }
+        .ThisText2{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            width:50%;
+            margin-left:13.5rem;
+            font-weight:bold;
+        }
+        .TwoText{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            width:50%;
+            margin-left:13.5rem;
+            font-weight:bold;
+        }
+
+        .MyTv1{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            width:50%;
+            margin-left:35rem;
+            font-weight:bold;}
+        .MyTv2{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            width:50%;
+            margin-left:14.5rem;
+            font-weight:bold;}
+
+        .Atext1{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            width:50%;
+            margin-left:35.5rem;
+            font-weight:bold;
+        }
+        .Atext2{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            width:100%;
+            margin-left:-1.5rem;
+            font-weight:bold;
+        }
+        .Ptext1{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            width:50%;
+            margin-left:35rem;
+            font-weight:bold;
+        }
+        .Ptext2 {
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+            width: 50%;
+            margin-left: 14rem;
+            font-weight: bold;
+        }
+        .Fulltext1{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            width:50%;
+            margin-left:36rem;
+            font-weight:bold;
+        }
+        .Fulltext2{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            width:50%;
+            margin-left:13.5rem;
+            font-weight:bold;
+        }
+        .EmptyText1{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            width:50%;
+            margin-left:33.5rem;
+            font-weight:bold;
+
+        }
+        .EmptyText2{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            width:50%;
+            margin-left:14rem;
+            font-weight:bold;
+        }
+
+        .Wtext1{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            width:50%;
+            margin-left:34rem;
+            font-weight:bold;
+        }
+        .Wtext2{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            width:50%;
+            margin-left:14rem;
+            font-weight:bold;
+        }
+        .QText1{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            width:50%;
+            margin-left:36rem;
+            font-weight:bold;
+        }
+        .QText2{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            width:25%;
+            margin-left:14.5rem;
+            font-weight:bold;
+        }
+        .Pytext1{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            width:25%;
+            margin-left:35.5rem;
+            font-weight:bold;
+        }
+        .Pytext2{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            width:25%;
+            margin-left:14rem;
+            font-weight:bold;
+        }
+        .Pytext3{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            width:25%;
+            margin-left:35rem;
+            font-weight:bold;
+        }
+        .Pytext4{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            width:25%;
+            margin-left:14rem;
+            font-weight:bold;
+        }
+        .charText1{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            width:50%;
+            margin-left:35.5rem;
+            font-weight:bold;
+        }
+        .charText2{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            width:25%;
+            margin-left:14rem;
+            font-weight:bold;
+        }
+        .charText3{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            width:25%;
+            margin-left:35.5rem;
+            font-weight:bold;
+        }
+        .charText4{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            width:25%;
+            margin-left:15rem;
+            font-weight:bold;
+        }
+
+
+
+        .i-row {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 3px 3px 0 3px;
+
+        }
+
+        .i-row img {
+                margin-left: 30rem;
+
+        }
+
+        .i-item1 {
+                flex: 0 0 100%;
+                max-width: 33.33%;
+                padding: 3px 3px 0 3px;
+        }
+
+        .i-item2 {
+                flex: 0 0 100%;
+                max-width: 33.33%;
+                padding: 3px 3px 0 3px;
+        }
+
+        .i-item3 {
+                flex: 0 0 100%;
+                max-width: 33.33%;
+                padding: 3px 3px 0 3px;
+        }
+
+        .i-item1 img {
+                margin-left: 36rem;
+        }
+
+        .i-item2 img {
+                margin-left: 19rem;
+        }
+
+        .i-item3 img {
+                margin-left: 2rem;
+        }
+
+
+
+        .img-row a,
+        .i-row a {
+                color: black;
+                text-decoration: none;
+                position: relative;
+        }
+
+        .section-title a:hover {
+                color: black;
+                text-decoration: none;
+        }
+
+        .img-container {
+                display: flex;
+                margin-top: -3rem;
+                text-align: center;}
+
+        .TheContainer1{
+            display: flex;
+            margin-top: 1rem;
+            text-align: center;}
+
+        .TheContainer2{
+            display: flex;
+            margin-top: 2rem;
+            text-align: center;}
+
+
+        .MyContent{
+            display: flex;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .NewsContent{
+            display: flex;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        .NextContent1{
+            display: flex;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        .NextContent2{
+            display: flex;
+            margin-top: 1rem;
+            text-align: center;
+        }
+        .FirstContent,.SecondContent{
+            display: flex;
+            margin-top: 1rem;
+            text-align: center;
+        }
+        
+
+        .img-containerO {
+                display: flex;
+                margin-top: -3rem;
+                text-align: center;
+        }
+
+        .img-containerO img {
+                margin-top: 3rem;
+                margin-left: 36rem;
+        }
+
+        .s-titleO {
+                font-size: 1.1rem;
+                margin-top:4rem;
+                margin-left:36rem;
+        }
+        .s-title1 {
+            font-size: 1.1rem;
+            margin-top:-2rem;
+            margin-left:36rem;
+        }
+
+        .s-titleW {
+                font-size: 1.1rem;
+                margin-left:37rem;
+
+        }
+
+        .text {
+                font-size: 1rem;
+                color: black;
+                margin-left: 15px;
+                font-weight: bold;
+
+        }
+
+
+        .ad1 {
+                flex: 0 0 100%;
+                max-width: 50%;
+                padding: 3px 3px 0 3px
+        }
+
+        .ad1 img {
+                max-width: 100%;
+                margin-left: 36rem;
+                text-align: center;
+        }
+
+        .ad2 {
+                flex: 0 0 100%;
+                max-width: 50%;
+                margin-left: 0rem;
+
+        }
+
+        .ad2 img {
+                max-width: 100%;
+                margin-left: 6rem;
+                text-align: center;
+                padding: 3px 3px 0 3px;
+        }
+
+
+        .my-text2{
+               font-size: 0.9rem;
+               flex-wrap:wrap;
+               width:100%;
+               margin-left:0rem;
+               font-weight:bold;
+        }
+        .my-text3{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            width:50%;
+            margin-left:13.5rem;
+            font-weight:bold;
+        }
+
+
+
+        .blu-box {
+                width: 20px;
+                height: 12px;
+                background-color: dodgerblue;
+                margin-right: 20px;
+        }
+        .blu-boxB{
+                width: 20px;
+                height: 12px;
+                background-color: dodgerblue;
+                margin-right: 20px;
+                margin-top:1rem;
+        }
+
+        .title-banner {
+                font-weight: bold;
+                font-size: 1.5rem;
+                display: flex;
+                align-items: center;
+                margin-top: 5rem;
+                margin-left:37rem;
+
+        }
+
+        .title-b {
+                font-weight: bold;
+                font-size: 1.5rem;
+                display: flex;
+                align-items: center;
+                margin-bottom: 1.5rem;
+                margin-top: 1rem;
+                margin-left:37rem;
+        }
+
+        .title-b1 {
+                font-weight: bold;
+                font-size: 1.5rem;
+                display: flex;
+                margin-top: 4rem;
+                margin-left:37rem;
+        }
+
+        .img-NewsContainer {
+                margin-left: 23rem;
+                flex: 0 0 100%;
+                max-width: 100%;
+
+        }
+        .img-NewsContainerQ{
+               margin-left:26rem;
+               max-width:100%;
+
+        }
+        .img-NewsContainerE{
+               margin-left:14.5rem;
+               display:flex;
+               width:100%
+        }
+        .img-NewsContainerN{
+              margin-left:15.5rem;
+              display:flex;
+              width:100%;
+        }
+        .img-NewsContainerP{
+            margin-left:14rem;
+            display:flex;
+            width:100%;
+        }
+        .img-NewsContainerZ{
+            margin-left:15.5rem;
+            display:flex;
+            width:100%;
+        }
+        .img-NewsContainerD{
+            margin-left:12rem;
+            display:flex;
+            width:100%;
+        }
+
+
+        .news-text {
+                font-size: 1rem;
+                margin-left: 1rem;
+                font-weight: bold;
+
+        }
+
+
+
+
+        .next-container img {
+                width: 100%;
+                height: auto;
+        }
+
+
+
+        .main-content img {
+                width: 100%;
+                height: auto;
+
+        }
+
+
+        .MyGrw {
+                display: flex;
+                margin-top: -2rem;
+                text-align: center;
+
+
+        }
+
+        .MyGrw img {
+                margin-top: 2rem;
+                margin-left: 0;
+        }
+
+        .getM1 {
+
+                flex: 0 0 100%;
+                max-width: 50%;
+                padding: 3px 3px 0 3px;
+        }
+
+        .getM1 img {
+                max-width: 100%;
+                margin-left: 36rem;
+                text-align: center;
+        }
+
+        .getM2 {
+                flex: 0 0 100%;
+                max-width: 50%;
+                margin-left: 0rem;
+        }
+
+        .getM2 img {
+                max-width: 100%;
+                margin-left: 6rem;
+                text-align: center;
+                padding: 3px 3px 0 3px;
+        }
+
+        .s-title {
+                margin-left:37rem;
+                font-size: 1.1rem;
+                margin-top: 3rem;
+        }
+        .s-titleB{
+            margin-left:37rem;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+
+         /*mantenere i link di colore nero*/
+        .video-item1 a ,.video-item2 a,.video-item3 a{
+            color: black; /* Assicura che il colore rimanga nero quando si fa clic */
+            text-decoration:none; /* assicura di avere underline quando si fa un clic*/
+        }
+        .img-item1 a,.i-item2 a,.img-item3 a{
+            color: black;
+            text-decoration:none;
+        }
+        .img-item1 a,.i-item2 a,.img-item3 a{
+            color: black;
+            text-decoration:none;
+        }
+        .container a{
+            color: black;
+            text-decoration:none;
+        }
+        .img-containerO  a{
+            color: black;
+            text-decoration:none;
+        }
+        .ad1 a,.ad2 a{
+            color: black;
+            text-decoration:none;
+        }
+        .img-NewsContainerZ a,.img-NewsContainerD a {
+            color: black;
+            text-decoration:none;
+        }
+        .getM1 a,.getM2 a{
+            color: black;
+            text-decoration:none;
+        }
+        .img-NewsContainerZ a,.img-NewsContainerE a,.img-NewsContainerN a,.img-NewsContainerP a, .img-NewsContainer a,.img-NewsContainerQ{
+            color: black;
+            text-decoration:none;
+        }
+
+
+
+
+
+            @media (max-width: 768px) {
+
+                main {
+                    flex-direction: column;
+
+                }
+
+                .main-article img {
+                    margin-left: 0; /* Assicura zero margine a sinistra per permettere di occupare tutto lo spazio */
+                }
+                .main-article h2{
+                    margin-left:0;
+                }
+                .main-article p{
+                    margin-left:0;
+                }
+
+
+                .small-news img {
+                    margin-left:-1rem;
+                    flex: 0 0 50%;
+                    width:100%;
+                }
+                .additional-text{
+                    margin-left:0;
+                }
+
+                .small-news p,
+                .small-news h3 {
+                    display: none;
+                }
+
+                .container img {
+                    margin-left: 0;
+                    flex: 0 0 auto;
+                }
+                .containerH img{
+                    margin-left:0;
+                }
+
+                .section-title{
+                    margin-left:0;
+                }
+                .video-row img {
+                    margin-left: 0;
+                }
+
+                .video-item1 {
+                    flex: 1 0 auto; /* Modifica il comportamento per i video */
+                }
+
+                .video-item2 {
+                    flex: 1 0 auto; /* Modifica il comportamento per i video */
+                }
+
+                .video-item3 {
+                    flex: 1 0 auto; /* Modifica il comportamento per i video */
+                }
+                .MyTv1{
+                    margin-left:0;
+                }
+                .MyTv2{
+                    margin-left:0;
+                }
+                .Moretext1{
+                    margin-left:0;
+                }
+                .Moretext2{
+                    margin-left:0;
+
+                }
+                .ThisText1{
+                    margin-left:0;
+                }
+                .ThisText2{
+                    margin-left:0;
+                }
+                .OneText{
+                    margin-left:0;
+                }
+                .TwoText{
+                    margin-left:0;
+                }
+                .Atext1{
+                    margin-left:0;
+                }
+                .Atext2{
+                    margin-left:0;
+                }
+                .Ptext1{
+                    margin-left:0;
+                }
+                .Ptext2{
+                    margin-left:0;
+                }
+                .Fulltext1{
+                    margin-left:0;
+                }
+                .Fulltext2{
+                    margin-left:0;
+                }
+                .EmptyText1{
+                    margin-left:0;
+                }
+                .EmptyText2{
+                    margin-left:0;
+                }
+                .QText1{
+                    margin-left:0;
+                }
+                .QText2{
+                    margin-left:0;
+                }
+                .Wtext1{
+                    margin-left:0;
+                }
+                .Wtext2{
+                    margin-left:0;
+                }
+                .Pytext1{
+                    margin-left:0;
+                }
+                .Pytext2{
+                    margin-left:0;
+                }
+                .Pytext3{
+                    margin-left:0;
+                }
+                .Pytext4{
+                    margin-left:0;
+                }
+                .charText1{
+                    margin-left:0;
+                }
+                .charText2{
+                    margin-left:0;
+                }
+                .charText3{
+                    margin-left:0;
+                }
+                .charText4{
+                    margin-left:0;
+                }
+                .my-text3{
+                    margin-left:0;
+                }
+
+                .thumbnail-text1{
+                    margin-left:0;
+                }
+
+                .thumbnail-text2{
+                    margin-left:0;
+                }
+                .thumbnail-text3{
+                    margin-left:0;
+                }
+
+
+                .img-row img {
+                    margin-left: 0;
+                }
+
+                .img-item1 {
+                    flex: 1 0 auto; /* Modifica anche qui */
+                }
+
+
+                .img-item2 {
+                    flex: 1 0 auto;
+                }
+
+                .img-item3 {
+                    flex: 1 0 auto;
+                }
+                .thumb-text1 {
+                    margin-left:0;
+                }
+                .thumb-text2 {
+                    margin-left:0;
+                }
+                .thumb-text3 {
+                    margin-left: 0;
+                }
+
+
+                .i-row img {
+                    margin-left: 0;
+                }
+
+                .i-item1 {
+                    flex: 1 0 auto; /* Modifica anche qui */
+                }
+
+                .i-item2 {
+                    flex: 1 0 auto; /* Modifica anche qui */
+                }
+
+                .i-item3 {
+                    flex: 1 0 auto; /* Modifica anche qui */
+                }
+
+                .main-article {
+                    flex: 1 0 auto;
+                }
+
+                .img-container img {
+                    margin-left: 0;
+                }
+                .MyContent img,.NextContent img,.TheContainer1 img,.TheContainer2 img{
+                    margin-left:0;
+                }
+                .NewsContent img{
+                    margin-left:0;
+                }
+
+                .img-containerO img {
+                    margin-left: 0;
+                }
+
+                .s-titleO{
+                    margin-left:0;
+                }
+                .s-title1{
+                    margin-left:0;
+                }
+                .s-titleW{
+                    margin-left:0;
+                }
+                .title-banner {
+                    margin-left: 0;
+                }
+                .title-b{
+                    margin-left:0;
+                }
+                .title-b1{
+                    margin-left:0;
+                }
+                .s-title{
+                    margin-left:0;
+                }
+                .s-titleB{
+                    margin-left:0;
+                }
+
+
+                .ad1 img {
+                    margin-left: 0;
+                }
+
+                .ad2 img {
+                    margin-left: 0;
+                }
+
+                .my-text2{
+                    margin-left:0;
+                }
+
+
+                .MyGrw img {
+                    margin-left: 0;
+                }
+
+                .img-NewsContainer {
+                    margin-left: 0;
+                    flex: 0 0 auto;
+                }
+                .img-NewsContainerQ{
+                    margin-left:0;
+                    flex:0 0 auto;
+                }
+                .img-NewsContainerE{
+                    margin-left:0;
+                }
+                .img-NewsContainerP{ margin-left:0;}
+                .img-NewsContainerN{margin-left:0;}
+                .img-NewsContainerD{ margin-left:0;}
+                .img-NewsContainerZ{margin-left:0;}
+
+                .news-text {
+                    font-size: 1.2rem;
+
+                }
+
+
+                .gitem img {
+                    width: 100%;
+                }
+
+                .getM img {
+                    width: 100%;
+                }
+
+
+           }
+    </style>
+</head>
+<body>
+<header>
+    <div class ="containerW">
+
+        <a href ="#" class ="logo">The Detroit News</a>
+        <nav  class ="navbar">
+            <ul>
+                <li><a href="#"> Home </a></li>
+                <li><a href="#"> News</a></li>
+                <li><a href="#"> Sports</a></li>
+                <li><a href="#">Business </a></li>
+                <li><a href="#">Autos </a></li>
+                <li><a href="#">Life + Home </a></li>
+                <li><a href="#">Entertainment </a></li>
+                <li><a href="#">Opinion </a></li>
+                <li><a href="#"> Obituaries</a><li>
+                <li><a href="#"> Weather</a></li>
+                <li><a href="#">Advertise </a></li>
+                <li><a href="#"> Scores</a></li>
+                <li><a href="#"> eNewspaper</a></li>
+                <li><a href ="#"> Puzzles</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+
+<main>
+    <div class ="main-article ">
+        <a href = "#"><img src ="https://placehold.co/600x400?font=roboto " alt="placeholder immagine principale" class="img-fluid mb-6"></a>
+        <a href ="#"><h2>Lorem ipsum dolor sit amet</h2></a>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula facilisis nunc, sed varius risus viverra a.</p>
+
+    </div>
+
+    <aside>
+        <article class="small-news">
+            <a href="#"><img src="https://placehold.co/600x400/png" alt="Placeholder immagine miniature 1 " class="img-fluid mb-2" ></a>
+            <div>
+                <a href ="#"><h3> Lorem Ipsum is simply dummy text of the printing .</h3></a>
+                <p class="small-news-text">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            </div>
+        </article>
+        <p class="additional-text">It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum</p>
+
+        <article class="small-news">
+            <a href ="#"><img src="https://placehold.co/600x400/png" alt="Placeholder immagine miniature 2 " class="img-fluid mb-2"></a>
+            <div>
+                <a href ="#"><h3>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.  </h3></a>
+                <p> 5 ore fa </p>
+            </div>
+        </article>
+        <p class="additional-text">Contrary to popular belief, Lorem Ipsum is not simply random text.</p>
+    </aside>
+</main>
+
+
+
+<div class="immagini-colonna">
+    <h6 class ="text-muted text-center"> Advertisement - scroll for more content </h6>
+    <div class="riga-immagine">
+        <a href ="#"><h5> Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia.</h5></a>
+        <a href ="#"><img src="https://placehold.co/100x100" alt="Immagine 1"></a>
+    </div>
+
+    <div class="riga-immagine">
+        <a href="#"><h5>Looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum .</h5></a>
+        <a href="#"><img src="https://placehold.co/100x100" alt="Immagine 2"></a>
+    </div>
+
+    <div class="riga-immagine">
+        <a href="#"><h5>This book is a treatise on the theory of ethics, very popular during the Renaissance.</h5></a>
+        <a href="#"><img src="https://placehold.co/100x100" alt="Immagine 3"></a>
+    </div>
+
+    <div class ="riga-immagine ">
+        <a href ="#"><h5> The first line of Lorem Ipsum, Lorem ipsum dolor sit amet. </h5></a>
+        <a href="#"><img src ="https://placehold.co/100x100" alt=" immagine4" ></a>
+
+    </div>
+
+    <div class ="riga-immagine ">
+        <a href ="#"><h5> The standard chunk of Lorem Ipsum used since the 1500s. </h5></a>
+        <a href ="#"><img src ="https://placehold.co/100x100" alt =" immagine5   "></a>
+    </div>
+
+    <div class ="riga-immagine ">
+        <a href ="#" ><h5>Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum".</h5></a>
+        <a href = "#"><img src ="https://placehold.co/100x100" alt =" immagine6  "></a>
+    </div>
+
+    <div class ="riga-immagine ">
+        <a href ="#" ><h5>It is a long established fact that a reader will be distracted by the readable content.</h5></a>
+        <a href = "#"><img src ="https://placehold.co/100x100" alt =" immagine7  "></a>
+    </div>
+
+    <div class ="riga-immagine ">
+        <a href ="#" ><h5>The point of using Lorem Ipsum is that it has a more-or-less normal distribution</h5></a>
+        <a href = "#"><img src ="https://placehold.co/100x100" alt ="placehold immagine8 nminiature  "></a>
+    </div>
+
+    <div class ="riga-immagine ">
+        <a href ="#" ><h5>'lorem ipsum' will uncover many web sites still in their infancy.</h5></a>
+        <a href = "#"><img src ="https://placehold.co/100x100" alt ="placehold immagine9 nminiature  "></a>
+    </div>
+
+    <div class ="riga-immagine ">
+        <a href ="#" ><h5>Many desktop publishing packages and web page editors now use Lorem ipsum.</h5></a>
+        <a href = "#"><img src ="https://placehold.co/100x100" alt ="placehold immagine10 nminiature  "></a>
+    </div>
+
+    <div class ="riga-immagine ">
+        <a href ="#" ><h5>Various versions have evolved over the years, sometimes by accident.</h5></a>
+        <a href = "#"><img src ="https://placehold.co/100x100" alt ="placehold immagine11 nminiature  "></a>
+    </div>
+
+    <div class ="riga-immagine ">
+        <a href ="#" ><h5>Contrary to popular belief, Lorem Ipsum is not simply random text.</h5></a>
+        <a href = "#"><img src ="https://placehold.co/100x100" alt ="placehold immagine12 nminiature  "></a>
+    </div>
+
+</div>
+
+
+
+
+
+
+    <div class="section-title">
+        <a href ="#"><div class="red-box"></div></a>
+        Most Recent Videos
+    </div>
+<div class ="container" >
+            <a href="#"><img src="https://placehold.co/400x300" alt="immagine principale"></a>
+
+        <div >
+            <a href="#"><h5 >It uses a dictionary of over 200 Latin words, combined with a handful of model.</h5></a>
+
+        </div>
+</div>
+
+
+<div class="video-row ">
+        <div class="video-item1 ">
+            <a href ="#"><img src="https://placehold.co/250x140" alt="thumb1" class="img-fluid mb-2"></a>
+            <a href="#"><p class="thumbnail-text1">He generated Lorem Ipsum is therefore always free from repetition.</p></a>
+        </div>
+        <div class="video-item2 ">
+            <a href="#"><img src="https://placehold.co/250x140" alt="thumb2" class="img-fluid mb-2">
+            <p class="thumbnail-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></a>
+        </div>
+        <div class="video-item3  ">
+            <a href="#"><img src="https://placehold.co/250x140" alt="thumb3" class="img-fluid mb-2">
+                <p class="thumbnail-text3">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></a>
+        </div>
+
+</div>
+
+
+
+
+
+
+
+
+<div class="section-title">
+    <a href="#"><div class="red-box"></div></a>
+        Most Recent Galleries
+    </div>
+<div class ="container">
+            <a href="#"><img src="https://placehold.co/400x300" alt="immagine principale"></a>
+        <div >
+            <a href="#"><h5>It has roots in a piece of classical Latin literature from 45 BC</h5></a>
+
+        </div>
+
+</div>
+
+<div class="video-row">
+    <div class="video-item1 ">
+        <a href="#"><img src="https://placehold.co/250x140" alt="immagine1" class="img-fluid mb-2"></a>
+        <a href="#"><p class="thumbnail-text1">Richard McClintock, a Latin professor at Hampden-Sydney .</p></a>
+    </div>
+    <div class="video-item2 ">
+        <a href="#"><img src="https://placehold.co/250x140" alt="immagine2" class="img-fluid mb-2"></a>
+        <a href="#"><p class="thumbnail-text2">There are many variations of passages of Lorem Ipsum .</p></a>
+    </div>
+    <div class="video-item3 ">
+        <a href="#"><img src="https://placehold.co/250x140" alt="immagine3" class="img-fluid mb-2"></a>
+        <a href="#"><p class="thumbnail-text3"> If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything </p></a>
+    </div>
+</div>
+
+
+
+
+
+<div class="img-row">
+    <div class="img-item1 ">
+        <a href="#"><img src="https://placehold.co/200x200" alt="immagine1" class="img-fluid mb-2"></a>
+        <a href="#"><p class="thumb-text1">Ut enim ad minim veniam, quis nostrud .</p></a>
+    </div>
+    <div class="img-item2 ">
+        <a href="#"><img src="https://placehold.co/200x200" alt="immagine2" class="img-fluid mb-2"></a>
+        <a href="#"><p class="thumb-text2">Duis aute irure dolor in reprehenderit in voluptate .</p></a>
+    </div>
+    <div class="img-item3 ">
+        <a href="#"><img src="https://placehold.co/200x200" alt="immagine3" class="img-fluid mb-2"></a>
+        <a href ="#"><p class="thumb-text3">Excepteur sint occaecat cupidatat non proident, .</p></a>
+    </div>
+</div>
+
+
+<div class ="i-row">
+    <div class="i-item1 ">
+        <a href ="#"><img src="https://placehold.co/200x200" alt="immagine1" class="img-fluid mb-2"></a>
+        <a href="#"><p class="thumb-text1">Sed ut perspiciatis unde omnis iste natus error sit voluptate.</p></a>
+    </div>
+    <div class="i-item2">
+        <a href="#"><img src="https://placehold.co/200x200" alt="immagine2" class="img-fluid mb-2"></a>
+        <a href="#"><p class="thumb-text2">Eaque ipsa quae ab illo inventore veritatis et quasi .</p></a>
+    </div>
+    <div class="i-item3 ">
+        <a href ="#"><img src="https://placehold.co/200x200" alt="immagine3" class="img-fluid mb-2"></a>
+        <a href ="#"><p class="thumb-text3">Nemo enim ipsam voluptatem quia voluptas sit aspernatur.</p></a>
+    </div>
+</div>
+
+
+
+<p class="s-titleO"> AD CONTENT</p>
+<div class="img-containerO d-flex justify-content-center">
+    <div class=" d-flex align-items-center  mb-4">
+        <div class ="col-md-6pe-md-3">
+            <a href="#"><img src="https://placehold.co/400x300" alt="immagine1" class="img-fluid mb-2"></a>
+        </div>
+        <div>
+            <a href="#"><p class="text"> Sed quia consequuntur magni dolores eos qui ratione.</p></a>
+        </div>
+    </div>
+</div>
+
+
+
+<p class="s-titleW"> AD CONTENT</p>
+<div class="img-container ">
+        <div class="ad1" >
+            <a href="#"><img src="https://placehold.co/400x200" alt="immagine1" class="img-fluid mb-2"></a>
+            <a href="#"><p class="MyTv1">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p></a>
+        </div>
+
+        <div class="ad2">
+            <a href="#"><img src="https://placehold.co/400x200" alt="immagine1" class="img-fluid mb-2"></a>
+            <a href="#"><p class="MyTv2">Consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt .</p></a>
+        </div>
+
+</diV>
+
+
+<div class ="title-banner">
+    <div class="blu-box"></div>
+        More Stories
+     </div>
+<div class = " img-NewsContainerZ d-flex justify-content-center">
+    <div class ="d-flex align-items-center mb-4" >
+        <div class="col-md-6pe-center mb-4">
+            <a href="#"><img src ="https://placehold.co/400x300" alt="immagine1" ></a>
+        </div>
+    </div>
+    <div>
+        <a href="#"><h1 class ="news-text">Ut enim ad minima veniam, quis nostrum exercitationem.</h1></a>
+    </div>
+
+</div>
+
+<div class ="title-b">
+    <div class="blu-box"></div>
+    <span>Recommended content</span>
+</div>
+<div class = " img-NewsContainerD d-flex justify-content-center" >
+    <div class =" d-flex align -items-center mb-4" >
+        <div class ="col-md-6pe-center mb-4">
+            <a href="#"><img src ="https://placehold.co/400x300" alt="immagine1" ></a>
+        </div>
+    </div>
+    <div>
+        <a href="#"><h1 class="news-text" >Ullam corporis suscipit laboriosam, nisi ? </h1></a>
+    </div>
+
+</div>
+
+
+
+
+
+<p class="s-title1"> AD CONTENT</p>
+<div class="MyContent ">
+    <div class="ad1" >
+        <a href="#"><img src="https://placehold.co/400x200" alt="immagine1" class="img-fluid mb-2"></a>
+        <a href="#"><p class="Moretext1"> Reprehenderit qui in ea voluptate velit esse quam nihil molest.</p></a>
+
+    </div>
+
+    <div class="ad2">
+        <a href="#"><img src="https://placehold.co/400x200" alt="immagine1" class="img-fluid mb-2"></a>
+        <a href="#"><p class="Moretext2">But I must explain to you how all this mistaken.</p></a>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class ="title-b1">
+    <div class =blu-boxB></div>
+    Most Popular
+</div>
+<div class="immagini-colonna">
+    <div class="riga-immagine">
+        <a href ="#"><h5>Lorem ipsum dolor sit amet .</h5></a>
+        <a href ="#"><img src="https://placehold.co/200x200" alt="Immagine 1"></a>
+    </div>
+
+    <div class="riga-immagine">
+        <a href="#"><h5>Complete account of the system, and expound the actual teachings.</h5></a>
+        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 2"></a>
+    </div>
+
+    <div class="riga-immagine">
+        <a href="#"><h5>No one rejects, dislikes, or avoids pleasure.</h5></a>
+        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 3"></a>
+    </div>
+</div>
+
+
+
+
+<p class="s-title"> AD CONTENT</p>
+<div class ="MyGrw ">
+    <div class ="getM1">
+            <a href="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
+            <a href="#"><p class="ThisText1">Who do not know how to pursue pleasure rationally encounter consequences.</p></a>
+
+    </div>
+    <div class ="getM2 ">
+            <a href="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
+            <a href="#"><p class="ThisText2">Nor again is there anyone who loves or pursues or desires  .</p></a>
+    </div>
+
+</div>
+
+<p class="s-titleB"> AD CONTENT</p>
+<div class ="MyGrw ">
+    <div class ="getM1">
+        <a href="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
+        <a href="#"><p class="OneText"> Pain of itself, because it is pain, but because occasionally .</p></a>
+
+    </div>
+    <div class ="getM2 ">
+        <a href="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
+        <a href="#"><p class="TwoText">Occur in which toil and pain can procure him some great pleasure</p></a>
+    </div>
+
+</div>
+
+
+
+<div class ="title-b1">
+    <div class =blu-boxB></div>
+    Most Popular
+</div>
+<div class="immagini-colonna">
+    <div class="riga-immagine">
+        <a href ="#"><h5>To take a trivial example, which of us ever undertakes  .</h5></a>
+        <a href ="#"><img src="https://placehold.co/200x200" alt="Immagine 1"></a>
+    </div>
+
+    <div class="riga-immagine">
+        <a href="#"><h5>laborious physical exercise, except to obtain some advantage from it? .</h5></a>
+        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 2"></a>
+    </div>
+
+    <div class="riga-immagine">
+        <a href="#"><h5>Find fault with a man who chooses to enjoy a pleasure.</h5></a>
+        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 3"></a>
+    </div>
+</div>
+
+
+
+<p class="s-titleO"> AD CONTENT</p>
+<div class="img-containerO d-flex justify-content-center">
+    <div class=" d-flex align-items-center  mb-4">
+        <div class ="col-md-6pe-md-3">
+            <a href="#"><img src="https://placehold.co/400x300" alt="immagine1" class="img-fluid mb-2"></a>
+        </div>
+        <div>
+            <a href="#"><p class="text">A man who chooses to enjoy a pleasure that has no annoying consequences?</p></a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<p class="s-titleW"> AD CONTENT</p>
+<div class ="img-container ">
+    <div class="ad1">
+        <a href="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
+        <a href="#"><p class="Atext1">Or one who avoids a pain that produces no resultant pleasure? .</p></a>
+    </div>
+
+    <div class ="ad2">
+        <a href="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
+        <a href="#"><p class="Atext2">the latest digital trends at automatica </p></a>
+    </div>
+</div>
+
+
+<p class="s-titleW"> AD CONTENT</p>
+<div class ="img-container ">
+    <div class="ad1">
+        <a href="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
+        <p class="Ptext1">At vero eos et accusamus et iusto odio dignissimos ducimus .</p>
+
+    </div>
+
+    <div class ="ad2">
+        <a href="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
+        <a href="#"><p class="Ptext2"> Praesentium voluptatum deleniti atque corrupti quos dolores.</p></a>
+
+    </div>
+</div>
+
+
+
+
+
+
+<div class ="title-b1">
+    <div class =blu-boxB></div>
+    Most Popular
+</div>
+<div class="immagini-colonna">
+    <div class="riga-immagine">
+        <a href ="#"><h5>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit .</h5></a>
+        <a href ="#"><img src="https://placehold.co/200x200" alt="Immagine 1"></a>
+    </div>
+
+    <div class="riga-immagine">
+        <a href="#"><h5>Excepturi sint occaecati cupiditate non providdent.</h5></a>
+        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 2"></a>
+    </div>
+
+    <div class="riga-immagine">
+        <a href="#"><h5>Maxime placeat facere possimus, omnis voluptas assumenda .</h5></a>
+        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 3"></a>
+    </div>
+</div>
+
+
+
+
+<p class="s-titleW"> AD CONTENT</p>
+<div class ="TheContainer1 ">
+    <div class="ad1">
+        <a href="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
+        <a href="#"><p class="Fulltext1">Emporibus autem quibusdam et aut officiis debitis aut rerum .</p></a>
+
+    </div>
+
+    <div class ="ad2">
+        <a href="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
+        <a href="#"><p class="Fulltext2"> Saepe eveniet ut et voluptates repudiandae sint et molestiae.</p></a>
+    </div>
+</div>
+
+<p class="s-titleW"> AD CONTENT</p>
+<div class ="TheContainer2 ">
+    <div class="ad1">
+        <a href="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
+        <a href="#"><p class="EmptyText1"> Itaque earum rerum hic tenetur a sapiente .</p></a>
+
+    </div>
+
+    <div class ="ad2">
+        <a href="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
+        <a href="#"><p class="EmptyText2"> Maiores alias consequatur aut perferendis doloribus asperiores repellat. </p></a>
+
+    </div>
+</div>
+
+
+
+<div class ="title-b1">
+    <div class =blu-boxB></div>
+    Most Popular
+</div>
+<div class="immagini-colonna">
+    <div class="riga-immagine">
+        <a href ="#"><h5>On the other hand, we denounce with righteous indignation and dislike men .</h5></a>
+        <a href ="#"><img src="https://placehold.co/200x200" alt="Immagine 1"></a>
+    </div>
+
+    <div class="riga-immagine">
+        <a href="#"><h5>who are so beguiled and demoralized by the charms .</h5></a>
+        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 2"></a>
+    </div>
+
+    <div class="riga-immagine">
+        <a href="#"><h5>So blinded by desire, that they cannot foresee the pain  .</h5></a>
+        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 3"></a>
+    </div>
+</div>
+
+
+
+
+
+<div class ="title-banner">
+    <div class="blu-box"></div>
+    More Stories
+</div>
+<div class = " img-NewsContainerN d-flex justify-content-center">
+    <div class ="d-flex align-items-center mb-4" >
+        <div class="col-md-6pe-center mb-4">
+            <a href="#"><img src ="https://placehold.co/400x300" alt="immagine1" ></a>
+        </div>
+    </div>
+    <div>
+        <a href="#"><h1 class ="news-text"> And equal blame belongs to those who fail in their duty.</h1></a>
+    </div>
+
+</div>
+
+<div class = " img-NewsContainerP d-flex justify-content-center" >
+    <div class =" d-flex align -items-center mb-4" >
+        <div class ="col-md-6pe-center mb-4">
+            <a href="#"><img src ="https://placehold.co/400x300" alt="immagine1" ></a>
+        </div>
+    </div>
+    <div>
+        <a href="#"><h1 class="news-text">Which is the same as saying through shrinking. </h1></a>
+    </div>
+
+</div>
+
+
+
+
+
+
+<p class="s-titleW"> AD CONTENT</p>
+
+<div class=" containerH"  >
+        <a href="#"><img src="https://placehold.co/300x200" alt="immagine1" class="img-fluid mb-2"></a>
+        <div>
+            <p class="text"> But in certain circumstances and owing to the claims of duty.</p>
+        </div>
+
+</div>
+
+
+<p class="s-title"> AD CONTENT</p>
+<div class ="NewsContent ">
+    <div class="ad1">
+        <a href="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
+        <a href="#"><p class="Wtext1">The obligations of business it will frequently. </p></a>
+
+    </div>
+
+    <div class =" ad2 ">
+        <a href="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
+        <a href="#"><p class="Wtext2">He wise man therefore always holds in these matters.  </p></a>
+
+    </div>
+</div>
+
+<div class ="NewsContent ">
+    <div class="ad1">
+        <a href="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
+        <a href="#"><p class="QText1">He rejects pleasures to secure other greater pleasures.</p></a>
+    </div>
+
+    <div class =" ad2 ">
+        <a href="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
+        <a href="#"><p class="QText2">Or else he endures pains to avoid worse pains. </p></a>
+
+    </div>
+</div>
+
+
+
+
+
+<div class ="title-b">
+    <div class =blu-box></div>
+    Most Popular
+</div>
+<div class="immagini-colonna">
+    <div class="riga-immagine">
+        <a href ="#"><h5>labore et dolore magnam aliquam quaerat voluptatem.</h5></a>
+        <a href ="#"><img src="https://placehold.co/200x200" alt="Immagine 1"></a>
+    </div>
+
+    <div class="riga-immagine">
+        <a href="#"><h5>Voluptate velit esse quam nihil molestiae consequatur.</h5></a>
+        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 2"></a>
+    </div>
+
+    <div class="riga-immagine">
+        <a href="#"><h5>vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</h5></a>
+        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 3"></a>
+    </div>
+</div>
+
+
+
+
+
+<p class="s-title"> AD CONTENT</p>
+<div class ="NextContent1">
+    <div class="ad1">
+        <a href="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
+        <a href="#"><p class="Pytext1">But I must explain to you how all this mistaken.</p></a>
+
+    </div>
+
+    <div class =" ad2">
+        <a href="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
+        <a href="#"><p class="Pytext2">No one rejects, dislikes, or avoids pleasure itself.</p></a>
+
+    </div>
+</div>
+
+<div class ="NextContent2 ">
+    <div class="ad1">
+        <a href="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
+        <a href ="#"><p class="Pytext3">Sunt in culpa qui officia deserunt mollit.</p></a>
+
+    </div>
+
+    <div class =" ad2 ">
+        <a href="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
+        <a href="#"><p class="Pytext4">But who has any right to find fault with a man .</p></a>
+    </div>
+</div>
+
+
+
+
+
+<div class ="title-b">
+    <div class =blu-box></div>
+    Most Popular
+</div>
+<div class="immagini-colonna">
+    <div class="riga-immagine">
+        <a href ="#"><h5> There are many variations of passages of Lorem Ipsum.</h5></a>
+        <a href ="#"><img src="https://placehold.co/200x200" alt="Immagine 1"></a>
+    </div>
+
+    <div class="riga-immagine">
+        <a href="#"><h5>If you are going to use a passage of Lorem Ipsum.</h5></a>
+        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 2"></a>
+    </div>
+
+    <div class="riga-immagine">
+        <a href="#"><h5>It uses a dictionary of over 200 Latin words.</h5></a>
+        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 3"></a>
+    </div>
+</div>
+
+
+
+
+
+<div class ="title-b">
+    <div class =blu-box></div>
+    More stories
+</div>
+<div class = " img-NewsContainerE d-flex justify-content-center">
+    <div class ="d-flex align-items-center mb-4" >
+        <div class="col-md-6pe-center mb-4">
+            <a href="#"><img src ="https://placehold.co/400x300" alt="immagine1" ></a>
+        </div>
+    </div>
+    <div>
+        <a href="#"><h1 class ="news-text">But I must explain to you how all this mistaken idea. </h1></a>
+    </div>
+
+</div>
+
+<div class = " img-NewsContainer d-flex justify-content-center" >
+    <div class =" d-flex align -items-center mb-4" >
+        <div class ="col-md-6pe-center mb-4">
+            <a href="#"><img src ="https://placehold.co/400x300" alt="immagine1" ></a>
+        </div>
+    </div>
+    <div>
+        <a href="#"><h1 class="news-text" >Contrary to popular belief, Lorem Ipsum.</h1></a>
+    </div>
+
+</div>
+
+
+
+
+
+<p class="s-titleW"> AD CONTENT</p>
+<div class="containerH" >
+    <a href="#"><img src="https://placehold.co/300x200" alt="immagine1" class="img-fluid mb-2"></a>
+
+        <div>
+            <p class="text">Lorem Ipsum has been the industry's.</p>
+        </div>
+
+</div>
+
+
+
+<p class="s-title"> AD CONTENT</p>
+<div class ="FirstContent ">
+    <div class="ad1">
+        <a href="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
+        <a href="#"><p class="charText1"> The point of using Lorem Ipsum is that it has a more-or-less.</p></a>
+
+    </div>
+
+    <div class =" ad2 ">
+        <a href="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
+        <a href="#"><p class="charText2">Lorem Ipsum has been the industry's standard .</p></a>
+
+    </div>
+</div>
+
+<div class ="SecondContent">
+    <div class="ad1">
+        <a href="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
+        <a href="#"><p class="charText3">Excepteur sint occaecat cupidatat non proident.</p></a>
+
+    </div>
+
+    <div class ="ad2">
+        <a href="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
+        <a href="#"><p class="charText4">The generated Lorem Ipsum is therefore always free.</p></a>
+
+    </div>
+</div>
+
+
+
+
+
+<div class ="title-b">
+    <div class =blu-box></div>
+    Most Popular
+</div>
+<div class="immagini-colonna">
+    <div class="riga-immagine">
+        <a href ="#"><h5> Et harum quidem rerum facilis est et expedita distinctio .</h5></a>
+        <a href ="#"><img src="https://placehold.co/200x200" alt="Immagine 1"></a>
+    </div>
+
+    <div class="riga-immagine">
+        <a href="#"><h5>On the other hand, we denounce with righteous.</h5></a>
+        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 2"></a>
+    </div>
+
+    <div class="riga-immagine">
+        <h5>Nisi ut aliquid ex ea commodi consequatur?</h5>
+        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 3"></a>
+    </div>
+</div>
+
+
+
+
+
+
+<p class="s-title"> AD CONTENT</p>
+<div class ="NextContent2 ">
+    <div class="ad1">
+        <a href="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
+        <a href="#"><p class="thumb-text1">Free from repetition, injected humour.</p></a>
+
+    </div>
+
+    <div class ="ad2">
+        <a href="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
+        <a href="#"><p class="my-text2">It is a long established fact that a reader .</p></a>
+
+    </div>
+</div>
+
+
+<p class="s-title"> AD CONTENT</p>
+<div class ="NextContent2 ">
+    <div class="ad1">
+        <a href="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
+        <a href="#"><p class="thumb-text1">Various versions have evolved over the years .</p></a>
+
+    </div>
+
+    <div class =" ad2">
+        <a href ="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
+        <a href="#"><p class="my-text3">At vero eos et accusamus et iusto odio dignissimos ducimus. </p></a>
+        <p> automatica | messe muchen</p>
+    </div>
+</div>
+
+
+
+
+<div class ="title-b">
+    <div class =blu-box></div>
+    Most Popular
+</div>
+<div class="immagini-colonna">
+    <div class="riga-immagine">
+        <a href ="#"><h5>In a free hour, when our power .</h5></a>
+        <a href ="#"><img src="https://placehold.co/200x200" alt="Immagine 1"></a>
+    </div>
+
+    <div class="riga-immagine">
+        <a href="#"><h5>ut aut reiciendis voluptatibus maiores alias consequatur</h5></a>
+        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 2"></a>
+    </div>
+
+    <div class="riga-immagine">
+        <a href="#"><h5>Et harum quidem rerum facilis est et expedita distinctio.</h5></a>
+        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 3"></a>
+    </div>
+</div>
+
+
+
+
+
+
+<div class ="title-banner">
+    <div class="blu-box"></div>
+    More Stories
+</div>
+<div class = " img-NewsContainer d-flex justify-content-center">
+    <div class ="d-flex align-items-center mb-4" >
+        <div class="col-md-6pe-center mb-4">
+            <a href="#"><img src ="https://placehold.co/400x300" alt="immagine1" ></a>
+        </div>
+    </div>
+    <div>
+        <a href="#"><h1 class ="news-text"> Quis autem vel eum iure reprehenderit </h1></a>
+    </div>
+
+</div>
+
+
+<div class = " img-NewsContainerQ d-flex justify-content-center" >
+    <div class =" d-flex align -items-center mb-4" >
+        <div class ="col-md-6pe-center mb-4">
+            <a href="#"><img src ="https://placehold.co/400x300" alt="immagine1" ></a>
+        </div>
+    </div>
+    <div>
+        <a href="#"><h1 class="news-text" >Pleasure that has no annoying consequences.</h1></a>
+    </div>
+
+</div>
+
+
+
+<footer style="background-color: #f8f8f8; padding: 20px;  font-family: sans-serif;">
+    <div>
+        <a href="#">Help</a> ·
+        <a href="#">Terms of Service</a> ·
+        <a href="#">Privacy Policy</a> ·
+        <a href="#">Site Map</a> ·
+        <a href="#">Responsible Disclosure</a>
+    </div>
+    <div style="margin-top: 10px;">
+        <a href="#"><img src="your-privacy-icon.png" alt="Privacy Icon" style="height: 20px; vertical-align: middle;"> Your Privacy Choices</a>
+    </div>
+    <div style="margin-top: 10px;">
+        <a href="#"><img src="facebook-icon.png" alt="Facebook" style="height: 20px;"></a>
+        <a href="#"><img src="twitter-icon.png" alt="Twitter" style="height: 20px;"></a>
+        <a href="#"><img src="instagram-icon.png" alt="Instagram" style="height: 20px;"></a>
+        <a href="#"><img src="pinterest-icon.png" alt="Pinterest" style="height: 20px;"></a>
+    </div>
+    <div style="margin-top: 10px; color: #888;">
+        © 2025 The Detroit News, a Digital First Media Newspaper
+    </div>
+</footer>
+
+</body>
+</html>
