@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name ="viewport" content ="width=device-device ,initial-scale =1.0">
@@ -55,6 +55,130 @@
             gap:40px;
 
         }
+
+
+        /*Nascondi il checkbox*/
+        #menu-toggle{
+            display:none;
+        }
+
+        .menu-icon{
+            font-size:28px;
+            cursor: pointer;
+            margin-left:auto;
+        }
+
+        .sidebar{
+            position:fixed;
+            left:-450px;
+            top:0;
+            width:450px;
+            height:100%;
+            overflow-y:auto;
+            background-color:white;
+            transition:left 0.3s ease;
+            padding:20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+        }
+        /*Mostra sidebar se checkbox selezionato*/
+        #menu-toggle:checked + .menu-icon +
+        .sidebar{
+            left:0;
+        }
+        /*pulsante chiudi*/
+        .close-btn{
+            font-size:24px;
+            display:block;
+            text-align:right;
+            cursor:pointer;
+            margin-bottom:20px;
+        }
+
+        /* Accordion generale */
+        .accordion {
+            margin-bottom: 10px;
+        }
+
+        .accordion input {
+            display: none;
+        }
+
+        .accordion label {
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+            padding: 8px 0;
+            color: #000000;
+            font-weight: bold;
+        }
+
+        .accordion ul {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            list-style: none;
+            padding-left: 15px;
+        }
+
+        .accordion input:checked ~ ul {
+            max-height: 500px; /* abbastanza per mostrare tutto */
+        }
+
+        .accordion .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .accordion input:checked + label .arrow {
+            transform: rotate(90deg);
+        }
+
+
+        .underline-search {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0 20px 0;
+        }
+
+        .underline-search input {
+            flex: 1;
+            border: none;
+            border-bottom: 1px solid #000000;
+            background: transparent;
+            font-size: 14px;
+            padding: 4px 0;
+            outline: none;
+        }
+
+        .underline-search button {
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+
+        ul li {
+            padding: 6px 0;
+        }
+
+
+        .sidebar h3{
+            color:#333333;
+            font-size:16px;
+            margin-top:22px;
+            font-weight:bold;
+        }
+        .sidebar ul{
+            list-style:none;
+            padding-left:0;
+        }
+        .side ul li{
+            padding:8px 0;
+        }
+
+
+
         .logo {
             font-size : 1rem;
             background-color: darkred;
@@ -64,7 +188,7 @@
             border-radius:1px;
             White-space:nowrap;
             flex-shrink:0;
-            margin-right:2rem;
+            margin-right:12rem;
             display: block;
             text-decoration :none;
 
@@ -191,7 +315,7 @@
             margin-left:5rem;
             margin-top:-1rem;
             padding:3px 3px 0 3px;
-            width:100%;
+            width:50%;
             font-weight:bold;
 
 
@@ -215,31 +339,27 @@
         .riga-immagine {
             display: flex;
             align-items: center;
-            gap: 100px;
-
+            gap:100px;
+            margin-top:0rem;
 
         }
-
-        .riga-immagine h5 {
+        .riga-immagine h5{
             font-size: 14px;
-            margin-left: 3rem;
+            margin-left:3rem;
             max-width: 150px;
-            flex: 5;
-            margin-right: 8rem;
-            font-weight: bold;
+            flex:10;
+            margin-right:-2rem;
 
 
         }
 
-        .riga-immagine img {
-            width: 100px;
-            /*height: 100%;*/
-        }
+
+
 
         .text-muted {
             font-size: 0.85rem;
             text-transform: lowercase;
-            margin-left: 10rem;
+            margin-left: -25rem;
             margin-top:5rem;
 
 
@@ -272,9 +392,9 @@
             text-decoration-color: red;/* per avere un colore rosso quando il link viene cliccato*/
         }
 
-        .riga-immagine a:hover,
-        .riga-immagine a:focus,
-        .riga-immagine a:active{
+
+
+        .riga-immagine a:hover{
             color: black; /* Assicura che il colore rimanga nero quando si fa clic */
             text-decoration:underline; /* assicura di avere underline quando si fa un clic*/
             text-decoration-color: red;/* per avere un colore rosso quando il link viene cliccato*/
@@ -398,13 +518,35 @@
         .video-item3 img {
                 margin-left: 6rem;
         }
+        .nailtext1{
+            font-weight:bold;
+            font-size: 0.9rem;
+            margin-left:36rem;
+            width:45%;
+            color:black;
+        }
+
+        .nailtext2{
+            font-weight:bold;
+            font-size: 0.9rem;
+            margin-left:21rem;
+            width:50%;
+            color:black;
+        }
+        .nailtext3{
+            font-weight:bold;
+            font-size: 0.9rem;
+            margin-left:6rem;
+            width:50%;
+            color:black;
+        }
 
         .thumbnail-text1{
             font-weight:bold;
             font-size: 0.9rem;
             margin-left:36rem;
             width:50%;
-            color:black;
+
         }
 
         .thumbnail-text2{
@@ -412,7 +554,8 @@
             font-size: 0.9rem;
             flex-wrap:wrap;
             margin-left:21rem;
-            color:black;
+            width:50%;
+
         }
 
         .thumbnail-text3{
@@ -420,8 +563,8 @@
             font-size: 0.9rem;
             margin-left:6rem;
             flex-wrap:wrap;
-            width:60%;
-            color:black;
+            width:50%;
+
         }
 
 
@@ -477,20 +620,55 @@
             font-weight:bold;
             color:black;
         }
-
-        .thumb-text2 {
+        .test1{
             font-size: 0.9rem;
-            margin-left:21rem;
+            flex-wrap:wrap;
+            margin-left:36rem;
+            display:flex;
+            width:40%;
+            font-weight:bold;
+            color:black;
+        }
+
+        .test2 {
+            font-size: 0.9rem;
+            margin-left:19rem;
             flex-wrap:wrap;
             font-weight:bold;
             color:black;
-            width:25%;
+            width:40%;
         }
 
-        .thumb-text3 {
+        .test3 {
             font-size: 0.9rem;
             flex-wrap:wrap;
-            width:60%;
+            width:45%;
+            margin-left:2rem;
+            font-weight:bold;
+            color:black;
+        }
+
+        .thumb1{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            width:40%;
+            margin-left:36rem;
+            font-weight:bold;
+            color:black;
+        }
+        .thumb2{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            width:45%;
+            margin-left:19rem;
+            font-weight:bold;
+            color:black;
+        }
+
+        .thumb3{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            width:45%;
             margin-left:2rem;
             font-weight:bold;
             color:black;
@@ -513,7 +691,7 @@
             color:black;
             font-weight:bold;
         }
-        .ThisText1,.OneText{
+        .ThisText1{
             font-size: 0.9rem;
             flex-wrap:wrap;
             margin-left:36rem;
@@ -528,6 +706,14 @@
             margin-left:13.5rem;
             font-weight:bold;
         }
+        .OneText{
+            font-size: 0.9rem;
+            flex-wrap:wrap;
+            margin-left:34rem;
+            display:flex;
+            width:50%;
+            font-weight:bold;
+        }
         .TwoText{
             font-size: 0.9rem;
             flex-wrap:wrap;
@@ -540,13 +726,13 @@
             font-size: 0.9rem;
             flex-wrap:wrap;
             width:50%;
-            margin-left:35rem;
+            margin-left:35.5rem;
             font-weight:bold;}
         .MyTv2{
             font-size: 0.9rem;
             flex-wrap:wrap;
             width:50%;
-            margin-left:14.5rem;
+            margin-left:13rem;
             font-weight:bold;}
 
         .Atext1{
@@ -754,7 +940,7 @@
 
         .img-container {
                 display: flex;
-                margin-top: -3rem;
+                margin-top:1rem;
                 text-align: center;}
 
         .TheContainer1{
@@ -804,8 +990,34 @@
 
         .img-containerO img {
                 margin-top: 3rem;
-                margin-left: 36rem;
+                margin-left: 30rem;
         }
+
+        .img-containerO p {
+            display: flex;
+            margin-top: -8rem;
+            text-align: center;
+        }
+
+
+        .img-containerM {
+            display: flex;
+            margin-top: -3rem;
+            text-align: center;
+        }
+
+        .img-containerM img {
+            margin-top: 3rem;
+            margin-left: 36rem;
+        }
+
+        .img-containerM p {
+            display: flex;
+            margin-top: -8rem;
+            text-align: center;
+            margin-left:5rem;
+        }
+
 
         .s-titleO {
                 font-size: 1.1rem;
@@ -829,6 +1041,7 @@
                 color: black;
                 margin-left: 15px;
                 font-weight: bold;
+                width:70%
 
         }
 
@@ -946,7 +1159,7 @@
             width:100%;
         }
         .img-NewsContainerZ{
-            margin-left:15.5rem;
+            margin-left:12.5rem;
             display:flex;
             width:100%;
         }
@@ -1033,51 +1246,136 @@
 
 
          /*mantenere i link di colore nero*/
-        .video-item1 a ,.video-item2 a,.video-item3 a{
-            color: black; /* Assicura che il colore rimanga nero quando si fa clic */
-            text-decoration:none; /* assicura di avere underline quando si fa un clic*/
-        }
-        .img-item1 a,.i-item2 a,.img-item3 a{
-            color: black;
-            text-decoration:none;
-        }
-        .img-item1 a,.i-item2 a,.img-item3 a{
-            color: black;
-            text-decoration:none;
-        }
+
         .container a{
             color: black;
             text-decoration:none;
         }
+        .container a:hover{
+            color:black;
+            text-decoration:underline;
+            text-decoration-color:red;
+        }
+        .video-item1 a,.video-item2 a,.video-item3 a{
+            color: black; /* Assicura che il colore rimanga nero quando si fa clic */
+            text-decoration:none; /* assicura di avere underline quando si fa un clic*/
+        }
+        .video-item1 a:hover,.video-item2 a:hover,.video-item3 a:hover{
+            color:black;
+            text-decoration:underline;
+            text-decoration-color: red;
+        }
+
+
+        .img-item1 a,.i-item2 a,.img-item3 a{
+            color: black;
+            text-decoration:none;
+        }
+
+        .img-item1 a:hover,.i-item2 a:hover,.img-item3 a:hover{
+            color: black;
+            text-decoration:underline;
+            text-decoration-color: black;
+        }
+
+
+
+        .i-item1 a,.i-item2 a,.i-item3 a{
+            color: black;
+            text-decoration:none;
+        }
+
+        .i-item1 a:hover,.i-item2 a:hover,i-item3 a:hover{
+            color: black;
+            text-decoration:underline;
+            text-decoration-color:black;
+        }
+
+
         .img-containerO  a{
             color: black;
             text-decoration:none;
         }
+        .img-containerO a:hover{
+            color: black;
+            text-decoration:underline;
+            text-decoration-color:black;
+        }
+
+
         .ad1 a,.ad2 a{
             color: black;
             text-decoration:none;
         }
+
+        .ad1 a:hover,.ad2 a:hover{
+            color: black;
+            text-decoration:underline;
+            text-decoration-color:black;
+        }
+
+
         .img-NewsContainerZ a,.img-NewsContainerD a {
             color: black;
             text-decoration:none;
         }
+        .img-NewsContainerZ a:hover,.img-NewsContainerD a:hover{
+            color: black;
+            text-decoration:underline;
+            text-decoration-color:black;
+        }
+
+
         .getM1 a,.getM2 a{
             color: black;
             text-decoration:none;
         }
-        .img-NewsContainerZ a,.img-NewsContainerE a,.img-NewsContainerN a,.img-NewsContainerP a, .img-NewsContainer a,.img-NewsContainerQ{
+        .getM1 a:hover,.getM2 a:hover{
+            color: black;
+            text-decoration:underline;
+            text-decoration-color:black;
+        }
+
+
+        .img-NewsContainerZ a,.img-NewsContainerE a,.img-NewsContainerN a,.img-NewsContainerP a, .img-NewsContainer a,.img-NewsContainerQ a{
             color: black;
             text-decoration:none;
+        }
+        .img-NewsContainerZ a:hover,.img-NewsContainerE a:hover,.img-NewsContainerN a:hover,.img-NewsContainerP a:hover, .img-NewsContainer a:hover,.img-NewsContainerQ a:hover{
+            color: black;
+            text-decoration:underline;
+            text-decoration-color:black;
+        }
+
+        .img-NewsContainerZ p{
+            margin-top:2rem;
+            font-size:0.8rem;
+            display:flex;
+            width:100%;
+            margin-left:2rem;
+        }
+
+        .img-NewsContainerD p{
+            margin-top:2rem;
+            font-size:0.8rem;
+            display:flex;
+            width:100%;
+            margin-left:2rem;
         }
 
 
 
 
 
-            @media (max-width: 768px) {
 
+
+        @media (max-width: 768px) {
+                nav ul{
+                    display:none;
+                }
                 main {
                     flex-direction: column;
+                    width:100%;
 
                 }
 
@@ -1090,6 +1388,10 @@
                 .main-article p{
                     margin-left:0;
                 }
+                .riga-immagine h5{
+                    width:100%;
+                    display:flex;
+                }
 
 
                 .small-news img {
@@ -1099,6 +1401,7 @@
                 }
                 .additional-text{
                     margin-left:0;
+                    width:95%;
                 }
 
                 .small-news p,
@@ -1107,8 +1410,13 @@
                 }
 
                 .container img {
-                    margin-left: 0;
-                    flex: 0 0 auto;
+                    margin-left:-1rem;
+                    width:350px;
+                    display:flex;
+                }
+                .container h5{
+                    width:100%;
+                    display:flex;
                 }
                 .containerH img{
                     margin-left:0;
@@ -1130,106 +1438,175 @@
                 }
 
                 .video-item3 {
-                    flex: 1 0 auto; /* Modifica il comportamento per i video */
+                    flex: 1 0 auto;
+                    /* Modifica il comportamento per i video */
+                }
+                .nailtext1{
+                    margin-left:0;
+                    width:100%;
+                }
+                .nailtext2{
+                    margin-left:0;
+                    width:100%;
+                }
+                .nailtext3{
+                    margin-left:0;
+                    width:100%;
+                }
+                .test1{
+                    margin-left:0;
+                    width:100%;
+                }
+                .test2{
+                    margin-left:0;
+                    width:100%;
+                }
+                .test3{
+                    margin-left:0;
+                    width:100%;
+                }
+                .thumb1{
+                    margin-left:0;
+                    width:100%
+                }
+                .thumb2{
+                    margin-left:0;
+                    width:100%;
+                }
+                .thumb3{
+                    margin-left:0;
+                    width:100%;
                 }
                 .MyTv1{
                     margin-left:0;
+                    width:100%
                 }
                 .MyTv2{
                     margin-left:0;
+                    width:100%;
                 }
                 .Moretext1{
                     margin-left:0;
+                    width:100%;
                 }
                 .Moretext2{
                     margin-left:0;
+                    width:100%;
 
                 }
                 .ThisText1{
                     margin-left:0;
+                    width:100%;
                 }
                 .ThisText2{
                     margin-left:0;
+                    width:100%;
                 }
                 .OneText{
                     margin-left:0;
+                    width:100%;
                 }
                 .TwoText{
                     margin-left:0;
+                    width:100%;
                 }
                 .Atext1{
                     margin-left:0;
+                    width:100%;
                 }
                 .Atext2{
                     margin-left:0;
+                    width:100%;
                 }
                 .Ptext1{
                     margin-left:0;
+                    width:100%;
                 }
                 .Ptext2{
                     margin-left:0;
+                    width:100%;
                 }
                 .Fulltext1{
                     margin-left:0;
+                    width:100%;
                 }
                 .Fulltext2{
                     margin-left:0;
+                    width:100%;
                 }
                 .EmptyText1{
                     margin-left:0;
+                    width:100%;
                 }
                 .EmptyText2{
                     margin-left:0;
+                    width:100%;
                 }
                 .QText1{
                     margin-left:0;
+                    width:100%;
                 }
                 .QText2{
                     margin-left:0;
+                    width:100%;
                 }
                 .Wtext1{
                     margin-left:0;
+                    width:100%;
                 }
                 .Wtext2{
                     margin-left:0;
+                    width:100%;
                 }
                 .Pytext1{
                     margin-left:0;
+                    width:100%;
                 }
                 .Pytext2{
                     margin-left:0;
+                    width:100%;
                 }
                 .Pytext3{
                     margin-left:0;
+                    width:100%;
                 }
                 .Pytext4{
                     margin-left:0;
+                    width:100%;
                 }
                 .charText1{
                     margin-left:0;
+                    width:100%;
                 }
                 .charText2{
                     margin-left:0;
+                    width:100%;
                 }
                 .charText3{
                     margin-left:0;
+                    width:100%;
                 }
                 .charText4{
                     margin-left:0;
+                    width:100%;
                 }
                 .my-text3{
                     margin-left:0;
+                    width:100%;
                 }
 
                 .thumbnail-text1{
                     margin-left:0;
+                    width:100%;
                 }
 
                 .thumbnail-text2{
                     margin-left:0;
+                    width:100%;
                 }
                 .thumbnail-text3{
                     margin-left:0;
+                    width:100%;
                 }
 
 
@@ -1252,12 +1629,6 @@
                 .thumb-text1 {
                     margin-left:0;
                 }
-                .thumb-text2 {
-                    margin-left:0;
-                }
-                .thumb-text3 {
-                    margin-left: 0;
-                }
 
 
                 .i-row img {
@@ -1276,8 +1647,9 @@
                     flex: 1 0 auto; /* Modifica anche qui */
                 }
 
-                .main-article {
-                    flex: 1 0 auto;
+
+                .img-NewsContainerZ p ,.img-NewsContainerD{
+                      width:50%;
                 }
 
                 .img-container img {
@@ -1292,6 +1664,9 @@
 
                 .img-containerO img {
                     margin-left: 0;
+                }
+                .img-containerM img{
+                    margin-left:0;
                 }
 
                 .s-titleO{
@@ -1341,20 +1716,50 @@
                     margin-left: 0;
                     flex: 0 0 auto;
                 }
-                .img-NewsContainerQ{
-                    margin-left:0;
-                    flex:0 0 auto;
-                }
+
                 .img-NewsContainerE{
                     margin-left:0;
                 }
+
                 .img-NewsContainerP{ margin-left:0;}
-                .img-NewsContainerN{margin-left:0;}
+                .img-NewsContainerP img{
+                    display:flex;
+                    width:350px;
+                }
+                .img-NewsContainerQ{
+                     margin-left:0;
+                     flex:0 0 auto;
+                }
+                .img-NewsContainerN {margin-left:0;}
+                .img-NewsContainerN img,.img-NewsContainer img,.img-NewsContainerE img,.img-NewsContainerQ img{
+                    display:flex;
+                    width:350px;
+                }
                 .img-NewsContainerD{ margin-left:0;}
+                .img-NewsContainerD{
+                    display:flex;
+                    width:350px;
+                }
                 .img-NewsContainerZ{margin-left:0;}
+                .img-NewsContainerZ img{
+                    display:flex;
+                    width:350px;
+                }
 
                 .news-text {
                     font-size: 1.2rem;
+                    width:50%;
+
+                }
+
+
+                .text{
+                    width:100%;
+                }
+
+
+                .text-muted {
+                    margin-left:4rem;
 
                 }
 
@@ -1373,6 +1778,222 @@
 </head>
 <body>
 <header>
+
+    <input type="checkbox" id="menu-toggle">
+
+    <!etichetta cliccabile---->
+    <label for ="menu-toggle" class="menu-icon">&#9776;</label>
+
+    <!---sidebar------>
+
+<div class="sidebar">
+
+    <!-----label perv chiudere il menu ---->
+    <label for ="menu-toggle" class="close-btn" >X</label>
+
+        <P><strong> What do you want to find?</strong></P>
+
+        <!-- Barra di ricerca sotto al testo -->
+    <div class="underline-search">
+        <input type="text" placeholder="Search...">
+        <button type="submit" title="Search">🔍</button>
+    </div>
+
+
+        <!-- Accordion: News -->
+        <div class="accordion">
+            <input type="checkbox" id="news">
+            <label for="news">News <span class="arrow">▶</span></label>
+            <ul>
+                <li>News</li>
+                <li>Detroit</li>
+                <li>Wayne</li>
+                <li>Oakland</li>
+                <li>Macomb</li>
+                <li>Michigan</li>
+                <li>Nation+World</li>
+                <li>Ukraine</li>
+                <li>Oxford school shooting</li>
+                <li>Politics</li>
+                <li>Elections</li>
+                <li>Media</li>
+                <li>Michigan Marvels</li>
+            </ul>
+        </div>
+
+        <!-- Accordion: Sports -->
+        <div class="accordion">
+            <input type="checkbox" id="sports">
+            <label for="sports">Sports <span class="arrow">▶</span></label>
+            <ul>
+                <li>Sports</li>
+                <li>Lions</li>
+                <li>Tigers</li>
+                <li>Red Wings</li>
+                <li>Michigan</li>
+                <li>Michigan State</li>
+                <li>Big Ten</li>
+                <li>More Colleges</li>
+                <li>High School</li>
+                <li>Soccer</li>
+                <li>Scoreboards</li>
+            </ul>
+        </div>
+
+        <div class="accordion">
+            <input type="checkbox" id="business">
+            <label for="business">business <span class="arrow">▶</span></label>
+            <ul>
+                <li>Business</li>
+                <li>Real Estate</li>
+                <li>Technology</li>
+            </ul>
+        </div>
+
+        <div class="accordion">
+            <input type="checkbox" id="autos">
+            <label for="autos">autos <span class="arrow">▶</span></label>
+            <ul>
+                <li>Autos</li>
+                <li>Stellantis</li>
+                <li>Ford</li>
+                <li>Foreign</li>
+                <li>General Motors</li>
+                <li>Auto Show</li>
+                <li> Podcast: Car Radio</li>
+                <li> Woodward Dream Cruise</li>
+            </ul>
+        </div>
+
+        <div class="accordion">
+            <input type="checkbox" id="life+home">
+            <label for="life+home">life+home<span class="arrow">▶</span></label>
+            <ul>
+                <li>Life+Home/li>
+                <li>Homestyle</li>
+                <li>Food+Drinks</li>
+                <li>Health</li>
+                <li>Advice</li>
+                <li>Gardening</li>
+                <li>Just4Kids</li>
+                <li>Travel</li>
+            </ul>
+        </div>
+
+        <div class="accordion">
+            <input type="checkbox" id="entertainment">
+            <label for="entertainment">entertainment<span class="arrow"><strong>▶</strong></span></label>
+            <ul>
+                <li>Entertainment</li>
+                <li>Movies</li>
+                <li>Music</li>
+                <li>TV + Radio</li>
+                <li>Dining + Bars</li>
+                <li>Celebrities</li>
+            </ul>
+        </div>
+
+        <div class="accordion">
+            <input type="checkbox" id="opinion">
+            <label for="opinion">opinion<span class="arrow"><strong>▶</strong></span></label>
+            <ul>
+                <li>Opinion</li>
+                <li>Columnists</li>
+                <li>Editorials</li>
+            </ul>
+        </div>
+
+        <div class="accordion">
+            <input type="checkbox" id="obituaries">
+            <label for="obituaries">obituaries<span class="arrow"><strong></strong></span></label>
+        </div>
+
+        <div class="accordion">
+            <input type="checkbox" id="weather">
+            <label for="weather">weather<span class="arrow"><strong></strong></span></label>
+        </div>
+
+        <div class="accordion">
+            <input type="checkbox" id="advertise">
+            <label for="advertise">advertise<span class="arrow"><strong></strong></span></label>
+        </div>
+
+        <div class="accordion">
+            <input type="checkbox" id="scores">
+            <label for="scores">scores<span class="arrow"><strong></strong></span></label>
+        </div>
+
+        <div class="accordion">
+            <input type="checkbox" id="eNewspaper">
+            <label for="eNewspaper">eNewspaper<span class="arrow"><strong></strong></span></label>
+        </div>
+
+        <div class="accordion">
+            <input type="checkbox" id="puzzles">
+            <label for="puzzles">puzzles<span class="arrow"><strong></strong></span></label>
+        </div>
+
+        <div class="accordion">
+            <input type="checkbox" id="newsLetters">
+            <label for="newsLetters">newsLetters<span class="arrow"><strong></strong></span></label>
+        </div>
+
+        <div class="accordion">
+            <input type="checkbox" id="podcasts">
+            <label for="podcasts">podcasts<span class="arrow"><strong>▶</strong></span></label>
+
+            <ul>
+               <li>Gritiron gang </li>
+                <li>Tigers todays</li>
+                <li>Octopulse</li>
+                <li>Weekend Essay</li>
+                <li>Detroit News Sports</li>
+                <li> Green Room</li>
+                <li>Car Radio</li>
+            </ul>
+        </div>
+
+        <div class="accordion">
+            <input type="checkbox" id="for subscribers">
+            <label for="for subscribers">for subscribers<span class="arrow"><strong></strong></span></label>
+        </div>
+
+        <div class="accordion">
+            <input type="checkbox" id="corrections">
+            <label for="corrections">corrections<span class="arrow"><strong></strong></span></label>
+        </div>
+
+        <div class="accordion">
+            <input type="checkbox" id="contributor">
+            <label for="contributor">contributor<span class="arrow"><strong></strong></span></label>
+        </div>
+
+        <div class="accordion">
+            <input type="checkbox" id="celebrate Michigan">
+            <label for="celebrate Michigan">celebrate Michigan<span class="arrow"><strong></strong></span></label>
+        </div>
+
+
+
+    <h3> MOST RECENT VIDEOS </h3>
+    <h3>Wolverines </h3>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+    <h3>Daily Briefing</h3>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+    <h3>advice</h3>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+    <h3>advice</h3>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+    <h3> video</h3>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+    <h3>More Sports</h3>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+    <h3>photo</h3>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+
+</div>
+
+
     <div class ="containerW">
 
         <a href ="#" class ="logo">The Detroit News</a>
@@ -1395,6 +2016,9 @@
             </ul>
         </nav>
     </div>
+
+
+
 </header>
 
 
@@ -1433,64 +2057,74 @@
 <div class="immagini-colonna">
     <h6 class ="text-muted text-center"> Advertisement - scroll for more content </h6>
     <div class="riga-immagine">
-        <a href ="#"><h5> Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia.</h5></a>
+        <a href ="#"><h5><strong>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</strong></h5></a>
         <a href ="#"><img src="https://placehold.co/100x100" alt="Immagine 1"></a>
+
     </div>
 
     <div class="riga-immagine">
-        <a href="#"><h5>Looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum .</h5></a>
+        <a href="#"><h5><strong>Looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum .</strong></h5></a>
         <a href="#"><img src="https://placehold.co/100x100" alt="Immagine 2"></a>
+
     </div>
 
     <div class="riga-immagine">
-        <a href="#"><h5>This book is a treatise on the theory of ethics, very popular during the Renaissance.</h5></a>
+        <a href="#"><h5><strong>This book is a treatise on the theory of ethics, very popular during the Renaissance.</strong></h5></a>
         <a href="#"><img src="https://placehold.co/100x100" alt="Immagine 3"></a>
+
     </div>
 
     <div class ="riga-immagine ">
-        <a href ="#"><h5> The first line of Lorem Ipsum, Lorem ipsum dolor sit amet. </h5></a>
+        <a href ="#"><h5><strong>Lorem Ipsum is simply dummy text of the printing and typesetting industry .</strong> </h5></a>
         <a href="#"><img src ="https://placehold.co/100x100" alt=" immagine4" ></a>
 
+
     </div>
 
     <div class ="riga-immagine ">
-        <a href ="#"><h5> The standard chunk of Lorem Ipsum used since the 1500s. </h5></a>
+        <a href ="#"><h5><strong> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</strong> </h5></a>
         <a href ="#"><img src ="https://placehold.co/100x100" alt =" immagine5   "></a>
+
     </div>
 
     <div class ="riga-immagine ">
-        <a href ="#" ><h5>Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum".</h5></a>
+        <a href ="#" ><h5><strong>Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum".</strong></h5></a>
         <a href = "#"><img src ="https://placehold.co/100x100" alt =" immagine6  "></a>
+
     </div>
 
     <div class ="riga-immagine ">
-        <a href ="#" ><h5>It is a long established fact that a reader will be distracted by the readable content.</h5></a>
+        <a href ="#" ><h5><strong>It is a long established fact that a reader will be distracted .</strong></h5></a>
         <a href = "#"><img src ="https://placehold.co/100x100" alt =" immagine7  "></a>
+
     </div>
 
     <div class ="riga-immagine ">
-        <a href ="#" ><h5>The point of using Lorem Ipsum is that it has a more-or-less normal distribution</h5></a>
+        <a href ="#" ><h5><strong>The point of using Lorem Ipsum is that it has a more-or-less </strong></h5></a>
         <a href = "#"><img src ="https://placehold.co/100x100" alt ="placehold immagine8 nminiature  "></a>
+
     </div>
 
     <div class ="riga-immagine ">
-        <a href ="#" ><h5>'lorem ipsum' will uncover many web sites still in their infancy.</h5></a>
+        <a href ="#" ><h5><strong>'lorem ipsum' will uncover many web sites still in their infancy.</strong></h5></a>
         <a href = "#"><img src ="https://placehold.co/100x100" alt ="placehold immagine9 nminiature  "></a>
     </div>
 
     <div class ="riga-immagine ">
-        <a href ="#" ><h5>Many desktop publishing packages and web page editors now use Lorem ipsum.</h5></a>
+        <a href ="#" ><h5><strong>Many desktop publishing packages and web page editors now use Lorem ipsum.</strong></h5></a>
         <a href = "#"><img src ="https://placehold.co/100x100" alt ="placehold immagine10 nminiature  "></a>
     </div>
 
     <div class ="riga-immagine ">
-        <a href ="#" ><h5>Various versions have evolved over the years, sometimes by accident.</h5></a>
+        <a href ="#" ><h5><strong>Various versions have evolved over the years, sometimes .</strong></h5></a>
         <a href = "#"><img src ="https://placehold.co/100x100" alt ="placehold immagine11 nminiature  "></a>
+
     </div>
 
     <div class ="riga-immagine ">
-        <a href ="#" ><h5>Contrary to popular belief, Lorem Ipsum is not simply random text.</h5></a>
+        <a href ="#" ><h5><strong>Contrary to popular belief, Lorem Ipsum is not simply .</strong></h5></a>
         <a href = "#"><img src ="https://placehold.co/100x100" alt ="placehold immagine12 nminiature  "></a>
+
     </div>
 
 </div>
@@ -1508,29 +2142,27 @@
             <a href="#"><img src="https://placehold.co/400x300" alt="immagine principale"></a>
 
         <div >
-            <a href="#"><h5 >It uses a dictionary of over 200 Latin words, combined with a handful of model.</h5></a>
-
+            <a href="#"><h5 ><strong>It uses a dictionary of over 200 Latin words, combined with a handful of model.</strong></h5></a>
+            <p> videos | 11 hours ago</p>
         </div>
 </div>
 
 
 <div class="video-row ">
-        <div class="video-item1 ">
-            <a href ="#"><img src="https://placehold.co/250x140" alt="thumb1" class="img-fluid mb-2"></a>
-            <a href="#"><p class="thumbnail-text1">He generated Lorem Ipsum is therefore always free from repetition.</p></a>
+        <div class="video-item1">
+            <a href ="#"><img src="https://placehold.co/250x140" alt="thumb1" class="img-fluid mb-2">
+            <p class="nailtext1">He generated Lorem Ipsum is therefore always free from repetition.</p></a>
         </div>
-        <div class="video-item2 ">
+        <div class="video-item2">
             <a href="#"><img src="https://placehold.co/250x140" alt="thumb2" class="img-fluid mb-2">
-            <p class="thumbnail-text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></a>
+            <p class="nailtext2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></a>
         </div>
-        <div class="video-item3  ">
+        <div class="video-item3 ">
             <a href="#"><img src="https://placehold.co/250x140" alt="thumb3" class="img-fluid mb-2">
-                <p class="thumbnail-text3">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></a>
+                <p class="nailtext3">Sed do eiusmod tempor incididunt ut labore et dolore .</p></a>
         </div>
 
 </div>
-
-
 
 
 
@@ -1544,24 +2176,24 @@
 <div class ="container">
             <a href="#"><img src="https://placehold.co/400x300" alt="immagine principale"></a>
         <div >
-            <a href="#"><h5>It has roots in a piece of classical Latin literature from 45 BC</h5></a>
-
+            <a href="#"><h5><strong>It has roots in a piece of classical Latin literature from 45 BC.</strong></h5></a>
+            <p> fotos | 11 hours ago</p>
         </div>
 
 </div>
 
 <div class="video-row">
-    <div class="video-item1 ">
-        <a href="#"><img src="https://placehold.co/250x140" alt="immagine1" class="img-fluid mb-2"></a>
-        <a href="#"><p class="thumbnail-text1">Richard McClintock, a Latin professor at Hampden-Sydney .</p></a>
+    <div class="video-item1">
+        <a href="#"><img src="https://placehold.co/250x140" alt="immagine1" class="img-fluid mb-2">
+        <p class="thumbnail-text1">Richard McClintock, a latin profesor.</p></a>
     </div>
     <div class="video-item2 ">
-        <a href="#"><img src="https://placehold.co/250x140" alt="immagine2" class="img-fluid mb-2"></a>
-        <a href="#"><p class="thumbnail-text2">There are many variations of passages of Lorem Ipsum .</p></a>
+        <a href="#"><img src="https://placehold.co/250x140" alt="immagine2" class="img-fluid mb-2">
+        <p class="thumbnail-text2">There are many variations of passages of Lorem .</p></a>
     </div>
     <div class="video-item3 ">
-        <a href="#"><img src="https://placehold.co/250x140" alt="immagine3" class="img-fluid mb-2"></a>
-        <a href="#"><p class="thumbnail-text3"> If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything </p></a>
+        <a href="#"><img src="https://placehold.co/250x140" alt="immagine3" class="img-fluid mb-2">
+        <p class="thumbnail-text3"> If you are going to use a passage of Lorem .</p></a>
     </div>
 </div>
 
@@ -1572,15 +2204,15 @@
 <div class="img-row">
     <div class="img-item1 ">
         <a href="#"><img src="https://placehold.co/200x200" alt="immagine1" class="img-fluid mb-2"></a>
-        <a href="#"><p class="thumb-text1">Ut enim ad minim veniam, quis nostrud .</p></a>
+        <a href="#"><p class="test1">Ut enim ad minim veniam, quis nostrud .</p></a>
     </div>
     <div class="img-item2 ">
         <a href="#"><img src="https://placehold.co/200x200" alt="immagine2" class="img-fluid mb-2"></a>
-        <a href="#"><p class="thumb-text2">Duis aute irure dolor in reprehenderit in voluptate .</p></a>
+        <a href="#"><p class="test2">Duis aute irure dolor in reprehenderit in voluptate .</p></a>
     </div>
     <div class="img-item3 ">
         <a href="#"><img src="https://placehold.co/200x200" alt="immagine3" class="img-fluid mb-2"></a>
-        <a href ="#"><p class="thumb-text3">Excepteur sint occaecat cupidatat non proident, .</p></a>
+        <a href ="#"><p class="test3">Excepteur sint occaecat cupidatat non proident, .</p></a>
     </div>
 </div>
 
@@ -1588,15 +2220,15 @@
 <div class ="i-row">
     <div class="i-item1 ">
         <a href ="#"><img src="https://placehold.co/200x200" alt="immagine1" class="img-fluid mb-2"></a>
-        <a href="#"><p class="thumb-text1">Sed ut perspiciatis unde omnis iste natus error sit voluptate.</p></a>
+        <a href="#"><p class="thumb1">Sed ut perspiciatis unde omnis iste .</p></a>
     </div>
     <div class="i-item2">
         <a href="#"><img src="https://placehold.co/200x200" alt="immagine2" class="img-fluid mb-2"></a>
-        <a href="#"><p class="thumb-text2">Eaque ipsa quae ab illo inventore veritatis et quasi .</p></a>
+        <a href="#"><p class="thumb2">Eaque ipsa quae ab illo inventore veritatis .</p></a>
     </div>
     <div class="i-item3 ">
         <a href ="#"><img src="https://placehold.co/200x200" alt="immagine3" class="img-fluid mb-2"></a>
-        <a href ="#"><p class="thumb-text3">Nemo enim ipsam voluptatem quia voluptas sit aspernatur.</p></a>
+        <a href ="#"><p class="thumb3">Nemo enim ipsam voluptatem quia  .</p></a>
     </div>
 </div>
 
@@ -1615,17 +2247,16 @@
 </div>
 
 
-
 <p class="s-titleW"> AD CONTENT</p>
 <div class="img-container ">
         <div class="ad1" >
             <a href="#"><img src="https://placehold.co/400x200" alt="immagine1" class="img-fluid mb-2"></a>
-            <a href="#"><p class="MyTv1">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p></a>
+            <a href="#"><p class="MyTv1">Neque porro quisquam est, qui dolorem ipsum quia .</p></a>
         </div>
 
         <div class="ad2">
             <a href="#"><img src="https://placehold.co/400x200" alt="immagine1" class="img-fluid mb-2"></a>
-            <a href="#"><p class="MyTv2">Consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt .</p></a>
+            <a href="#"><p class="MyTv2">Consectetur, adipisci velit, sed quia non numqua.</p></a>
         </div>
 
 </diV>
@@ -1642,7 +2273,8 @@
         </div>
     </div>
     <div>
-        <a href="#"><h1 class ="news-text">Ut enim ad minima veniam, quis nostrum exercitationem.</h1></a>
+        <a href="#"><h1 class ="news-text">Ut enim ad minima veniam, quis nostrum .</h1>
+            <p>Entertainment | 1 hour ago</p></a>
     </div>
 
 </div>
@@ -1659,6 +2291,7 @@
     </div>
     <div>
         <a href="#"><h1 class="news-text" >Ullam corporis suscipit laboriosam, nisi ? </h1></a>
+        <p> Business | 3 days ago</p>
     </div>
 
 </div>
@@ -1697,20 +2330,19 @@
 <div class="immagini-colonna">
     <div class="riga-immagine">
         <a href ="#"><h5>Lorem ipsum dolor sit amet .</h5></a>
-        <a href ="#"><img src="https://placehold.co/200x200" alt="Immagine 1"></a>
+        <a href ="#"><img src="https://placehold.co/100x100" alt="Immagine 1"></a>
     </div>
 
     <div class="riga-immagine">
         <a href="#"><h5>Complete account of the system, and expound the actual teachings.</h5></a>
-        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 2"></a>
+        <a href="#"><img src="https://placehold.co/100x100" alt="Immagine 2"></a>
     </div>
 
     <div class="riga-immagine">
         <a href="#"><h5>No one rejects, dislikes, or avoids pleasure.</h5></a>
-        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 3"></a>
+        <a href="#"><img src="https://placehold.co/100x100" alt="Immagine 3"></a>
     </div>
 </div>
-
 
 
 
@@ -1718,7 +2350,7 @@
 <div class ="MyGrw ">
     <div class ="getM1">
             <a href="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
-            <a href="#"><p class="ThisText1">Who do not know how to pursue pleasure rationally encounter consequences.</p></a>
+            <a href="#"><p class="ThisText1">Who do not know how to pursue pleasure rationally.</p></a>
 
     </div>
     <div class ="getM2 ">
@@ -1751,24 +2383,24 @@
 <div class="immagini-colonna">
     <div class="riga-immagine">
         <a href ="#"><h5>To take a trivial example, which of us ever undertakes  .</h5></a>
-        <a href ="#"><img src="https://placehold.co/200x200" alt="Immagine 1"></a>
+        <a href ="#"><img src="https://placehold.co/100x100" alt="Immagine 1"></a>
     </div>
 
     <div class="riga-immagine">
         <a href="#"><h5>laborious physical exercise, except to obtain some advantage from it? .</h5></a>
-        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 2"></a>
+        <a href="#"><img src="https://placehold.co/100x100" alt="Immagine 2"></a>
     </div>
 
     <div class="riga-immagine">
         <a href="#"><h5>Find fault with a man who chooses to enjoy a pleasure.</h5></a>
-        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 3"></a>
+        <a href="#"><img src="https://placehold.co/100x100" alt="Immagine 3"></a>
     </div>
 </div>
 
 
 
 <p class="s-titleO"> AD CONTENT</p>
-<div class="img-containerO d-flex justify-content-center">
+<div class="img-containerM d-flex justify-content-center">
     <div class=" d-flex align-items-center  mb-4">
         <div class ="col-md-6pe-md-3">
             <a href="#"><img src="https://placehold.co/400x300" alt="immagine1" class="img-fluid mb-2"></a>
@@ -1824,17 +2456,17 @@
 <div class="immagini-colonna">
     <div class="riga-immagine">
         <a href ="#"><h5>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit .</h5></a>
-        <a href ="#"><img src="https://placehold.co/200x200" alt="Immagine 1"></a>
+        <a href ="#"><img src="https://placehold.co/100x100" alt="Immagine 1"></a>
     </div>
 
     <div class="riga-immagine">
         <a href="#"><h5>Excepturi sint occaecati cupiditate non providdent.</h5></a>
-        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 2"></a>
+        <a href="#"><img src="https://placehold.co/100x100" alt="Immagine 2"></a>
     </div>
 
     <div class="riga-immagine">
         <a href="#"><h5>Maxime placeat facere possimus, omnis voluptas assumenda .</h5></a>
-        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 3"></a>
+        <a href="#"><img src="https://placehold.co/100x100" alt="Immagine 3"></a>
     </div>
 </div>
 
@@ -1879,17 +2511,17 @@
 <div class="immagini-colonna">
     <div class="riga-immagine">
         <a href ="#"><h5>On the other hand, we denounce with righteous indignation and dislike men .</h5></a>
-        <a href ="#"><img src="https://placehold.co/200x200" alt="Immagine 1"></a>
+        <a href ="#"><img src="https://placehold.co/100x200" alt="Immagine 1"></a>
     </div>
 
     <div class="riga-immagine">
         <a href="#"><h5>who are so beguiled and demoralized by the charms .</h5></a>
-        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 2"></a>
+        <a href="#"><img src="https://placehold.co/100x100" alt="Immagine 2"></a>
     </div>
 
     <div class="riga-immagine">
         <a href="#"><h5>So blinded by desire, that they cannot foresee the pain  .</h5></a>
-        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 3"></a>
+        <a href="#"><img src="https://placehold.co/100x100" alt="Immagine 3"></a>
     </div>
 </div>
 
@@ -1980,17 +2612,17 @@
 <div class="immagini-colonna">
     <div class="riga-immagine">
         <a href ="#"><h5>labore et dolore magnam aliquam quaerat voluptatem.</h5></a>
-        <a href ="#"><img src="https://placehold.co/200x200" alt="Immagine 1"></a>
+        <a href ="#"><img src="https://placehold.co/100x100" alt="Immagine 1"></a>
     </div>
 
     <div class="riga-immagine">
         <a href="#"><h5>Voluptate velit esse quam nihil molestiae consequatur.</h5></a>
-        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 2"></a>
+        <a href="#"><img src="https://placehold.co/100x100" alt="Immagine 2"></a>
     </div>
 
     <div class="riga-immagine">
         <a href="#"><h5>vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</h5></a>
-        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 3"></a>
+        <a href="#"><img src="https://placehold.co/100x100" alt="Immagine 3"></a>
     </div>
 </div>
 
@@ -2037,17 +2669,17 @@
 <div class="immagini-colonna">
     <div class="riga-immagine">
         <a href ="#"><h5> There are many variations of passages of Lorem Ipsum.</h5></a>
-        <a href ="#"><img src="https://placehold.co/200x200" alt="Immagine 1"></a>
+        <a href ="#"><img src="https://placehold.co/100x100" alt="Immagine 1"></a>
     </div>
 
     <div class="riga-immagine">
         <a href="#"><h5>If you are going to use a passage of Lorem Ipsum.</h5></a>
-        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 2"></a>
+        <a href="#"><img src="https://placehold.co/100x100" alt="Immagine 2"></a>
     </div>
 
     <div class="riga-immagine">
         <a href="#"><h5>It uses a dictionary of over 200 Latin words.</h5></a>
-        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 3"></a>
+        <a href="#"><img src="https://placehold.co/100x100" alt="Immagine 3"></a>
     </div>
 </div>
 
@@ -2139,17 +2771,17 @@
 <div class="immagini-colonna">
     <div class="riga-immagine">
         <a href ="#"><h5> Et harum quidem rerum facilis est et expedita distinctio .</h5></a>
-        <a href ="#"><img src="https://placehold.co/200x200" alt="Immagine 1"></a>
+        <a href ="#"><img src="https://placehold.co/100x100" alt="Immagine 1"></a>
     </div>
 
     <div class="riga-immagine">
         <a href="#"><h5>On the other hand, we denounce with righteous.</h5></a>
-        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 2"></a>
+        <a href="#"><img src="https://placehold.co/100x100" alt="Immagine 2"></a>
     </div>
 
     <div class="riga-immagine">
         <h5>Nisi ut aliquid ex ea commodi consequatur?</h5>
-        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 3"></a>
+        <a href="#"><img src="https://placehold.co/100x100" alt="Immagine 3"></a>
     </div>
 </div>
 
@@ -2169,7 +2801,7 @@
     <div class ="ad2">
         <a href="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
         <a href="#"><p class="my-text2">It is a long established fact that a reader .</p></a>
-
+        <p> automatica | messe muchen</p>
     </div>
 </div>
 
@@ -2182,7 +2814,7 @@
 
     </div>
 
-    <div class =" ad2">
+    <div class ="ad2">
         <a href ="#"><img src ="https://placehold.co/400x200"  alt="immagine1"></a>
         <a href="#"><p class="my-text3">At vero eos et accusamus et iusto odio dignissimos ducimus. </p></a>
         <p> automatica | messe muchen</p>
@@ -2199,17 +2831,17 @@
 <div class="immagini-colonna">
     <div class="riga-immagine">
         <a href ="#"><h5>In a free hour, when our power .</h5></a>
-        <a href ="#"><img src="https://placehold.co/200x200" alt="Immagine 1"></a>
+        <a href ="#"><img src="https://placehold.co/100x100" alt="Immagine 1"></a>
     </div>
 
     <div class="riga-immagine">
         <a href="#"><h5>ut aut reiciendis voluptatibus maiores alias consequatur</h5></a>
-        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 2"></a>
+        <a href="#"><img src="https://placehold.co/100x100" alt="Immagine 2"></a>
     </div>
 
     <div class="riga-immagine">
         <a href="#"><h5>Et harum quidem rerum facilis est et expedita distinctio.</h5></a>
-        <a href="#"><img src="https://placehold.co/200x200" alt="Immagine 3"></a>
+        <a href="#"><img src="https://placehold.co/100x100" alt="Immagine 3"></a>
     </div>
 </div>
 
@@ -2273,3 +2905,4 @@
 
 </body>
 </html>
+
